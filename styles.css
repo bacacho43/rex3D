@@ -12,6 +12,7 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     animation: fadeIn 0.9s ease-in-out both;
+    padding-top: 70px;
 }
 
 @keyframes fadeIn {
@@ -27,17 +28,24 @@ body {
 
 /* Header and Navigation */
 header {
-    position: sticky;
+    position: fixed;
     top: 0;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.72);
     backdrop-filter: blur(14px);
     z-index: 1000;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transform: translateY(0);
+    transition: transform 0.4s ease-in-out;
+}
+
+header.nav-hidden {
+    transform: translateY(-100%);
 }
 
 .navbar {
     padding: 1rem 0;
+    height: auto;
 }
 
 .nav-container {
