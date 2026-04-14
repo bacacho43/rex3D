@@ -66,12 +66,7 @@
         </div>
         <div class="video-card">
             <div class="video-wrapper">
-                <a href="https://www.tiktok.com/@rex3d.studio" target="_blank" class="tiktok-video-container" style="width: 100%; max-width: 600px; margin: 0 auto; aspect-ratio: auto;">
-                    <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=500" alt="Proceso Creativo REX 3D" class="tiktok-thumbnail" style="border-radius: 12px;">
-                    <div class="play-overlay">
-                        <i class="fab fa-tiktok"></i>
-                    </div>
-                </a>
+                <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@rex3d.studio/video/7326354051397635334" data-unique-id="7326354051397635334"><section>Cargando video...</section></blockquote>
             </div>
         </div>
     </section>
@@ -107,36 +102,16 @@
         <div class="swiper tiktok-swiper">
             <div class="swiper-wrapper">
                 <div class="swiper-slide tiktok-video-slide">
-                    <a href="https://www.tiktok.com/@rex3d.studio" target="_blank" class="tiktok-video-container video-card">
-                        <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=500" alt="Galería de Proyectos REX 3D" class="tiktok-thumbnail">
-                        <div class="play-overlay">
-                            <i class="fab fa-tiktok"></i>
-                        </div>
-                    </a>
+                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@rex3d.studio/video/7322986423023242502" data-unique-id="7322986423023242502"><section>Cargando video...</section></blockquote>
                 </div>
                 <div class="swiper-slide tiktok-video-slide">
-                    <a href="https://www.tiktok.com/@rex3d.studio" target="_blank" class="tiktok-video-container video-card">
-                        <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=500" alt="Galería de Proyectos REX 3D" class="tiktok-thumbnail">
-                        <div class="play-overlay">
-                            <i class="fab fa-tiktok"></i>
-                        </div>
-                    </a>
+                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@rex3d.studio/video/7323381467471318278" data-unique-id="7323381467471318278"><section>Cargando video...</section></blockquote>
                 </div>
                 <div class="swiper-slide tiktok-video-slide">
-                    <a href="https://www.tiktok.com/@rex3d.studio" target="_blank" class="tiktok-video-container video-card">
-                        <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=500" alt="Galería de Proyectos REX 3D" class="tiktok-thumbnail">
-                        <div class="play-overlay">
-                            <i class="fab fa-tiktok"></i>
-                        </div>
-                    </a>
+                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@rex3d.studio/video/7324128014563642630" data-unique-id="7324128014563642630"><section>Cargando video...</section></blockquote>
                 </div>
                 <div class="swiper-slide tiktok-video-slide">
-                    <a href="https://www.tiktok.com/@rex3d.studio" target="_blank" class="tiktok-video-container video-card">
-                        <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=500" alt="Galería de Proyectos REX 3D" class="tiktok-thumbnail">
-                        <div class="play-overlay">
-                            <i class="fab fa-tiktok"></i>
-                        </div>
-                    </a>
+                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@rex3d.studio/video/7325241032483589382" data-unique-id="7325241032483589382"><section>Cargando video...</section></blockquote>
                 </div>
             </div>
             <div class="swiper-pagination"></div>
@@ -182,6 +157,14 @@
                 },
             },
         });
+
+        // Reinicializar TikTok embeds cuando Swiper cambia de slide
+        swiper.on('slideChange', function() {
+            if (window.tiktok && window.tiktok.Embed) {
+                window.tiktok.Embed.lib.render(document.querySelector('.swiper-wrapper'));
+            }
+        });
     </script>
+    <script async src="https://www.tiktok.com/embed.js"></script>
 </body>
 </html>
