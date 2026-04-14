@@ -14,33 +14,6 @@ body {
     animation: fadeIn 0.9s ease-in-out both;
 }
 
-/* TikTok Embed Scaling */
-blockquote.tiktok-embed {
-    width: 100% !important;
-    max-width: 100% !important;
-    min-height: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-blockquote.tiktok-embed iframe {
-    width: 100% !important;
-    max-width: 100% !important;
-    height: 100% !important;
-    min-height: 100% !important;
-    position: absolute !important;
-    inset: 0 !important;
-}
-
-.video-wrapper blockquote {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
 @keyframes fadeIn {
     from {
         opacity: 0;
