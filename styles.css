@@ -68,12 +68,13 @@ header {
 }
 
 .logo-image {
-    width: 52px;
-    height: 52px;
+    height: 80px;
+    width: auto;
     object-fit: contain;
-    border-radius: 14px;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 6px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.06);
+    padding: 8px;
+    box-shadow: 0 0 18px rgba(0, 212, 255, 0.35), 0 0 32px rgba(0, 212, 255, 0.15);
 }
 
 .brand-text {
