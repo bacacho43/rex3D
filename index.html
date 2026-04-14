@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Perritos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        main {
+            padding: 40px 20px;
+        }
+
+        .galeria {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .tarjeta-perro {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .tarjeta-perro:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .tarjeta-perro img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            background: #f0f0f0;
+        }
+
+        .tarjeta-perro h2 {
+            padding: 20px 20px 10px 20px;
+            font-size: 1.8em;
+            color: #667eea;
+        }
+
+        .tarjeta-perro .raza {
+            padding: 0 20px 20px 20px;
+            color: #666;
+            font-size: 1.1em;
+            font-weight: 500;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.2);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+            font-size: 1em;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            .galeria {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+            }
+            .tarjeta-perro img {
+                height: 220px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+            .subtitle {
+                font-size: 1em;
+            }
+            .galeria {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🐕 Galería de Perritos Adorables 🐕</h1>
+        <p class="subtitle">Conoce a nuestros amigos más peludos</p>
+    </header>
+
+    <main>
+        <section class="galeria">
+            <div class="tarjeta-perro">
+                <img src="https://placedog.net/400/250?id=1" alt="Max">
+                <h2>Max</h2>
+                <p class="raza">Golden Retriever</p>
+            </div>
+
+            <div class="tarjeta-perro">
+                <img src="https://placedog.net/400/250?id=2" alt="Luna">
+                <h2>Luna</h2>
+                <p class="raza">Husky Siberiano</p>
+            </div>
+
+            <div class="tarjeta-perro">
+                <img src="https://placedog.net/400/250?id=3" alt="Charlie">
+                <h2>Charlie</h2>
+                <p class="raza">Bulldog Inglés</p>
+            </div>
+
+            <div class="tarjeta-perro">
+                <img src="https://placedog.net/400/250?id=4" alt="Bella">
+                <h2>Bella</h2>
+                <p class="raza">Pastor Alemán</p>
+            </div>
+
+            <div class="tarjeta-perro">
+                <img src="https://placedog.net/400/250?id=5" alt="Rocky">
+                <h2>Rocky</h2>
+                <p class="raza">Boxer</p>
+            </div>
+
+            <div class="tarjeta-perro">
+                <img src="https://placedog.net/400/250?id=6" alt="Daisy">
+                <h2>Daisy</h2>
+                <p class="raza">Cocker Spaniel</p>
+            </div>
+
+            <div class="tarjeta-perro">
+                <img src="https://placedog.net/400/250?id=7" alt="Bruno">
+                <h2>Bruno</h2>
+                <p class="raza">Labrador Retriever</p>
+            </div>
+
+            <div class="tarjeta-perro">
+                <img src="https://placedog.net/400/250?id=8" alt="Milo">
+                <h2>Milo</h2>
+                <p class="raza">Dachshund</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Galería de Perritos - Hecho con ❤️ para los amantes de los perros</p>
+    </footer>
+</body>
+</html>
