@@ -184,6 +184,11 @@
                 },
                 loop: true,
                 autoplay: false, // Desactivado porque lo manejamos con el ended del video
+                effect: 'fade',
+                fadeEffect: {
+                    crossFade: true,
+                },
+                speed: 1000,
             });
 
             const swiper = new Swiper('.swiper', {

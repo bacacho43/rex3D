@@ -32,10 +32,10 @@ header {
     top: 0;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.72);
-    backdrop-filter: blur(14px);
+    backdrop-filter: blur(10px);
     z-index: 1000;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
 }
 
 header.nav-hidden {
@@ -358,16 +358,21 @@ header.nav-hidden {
 .videos-swiper .video-card {
     max-width: 90%;
     width: 90%;
-    border-radius: 32px;
+    border-radius: 20px;
     overflow: hidden;
     border: 2px solid rgba(0, 212, 255, 0.35);
-    box-shadow: 0 24px 70px rgba(0, 212, 255, 0.18);
+    box-shadow: 0 20px 60px rgba(0, 212, 255, 0.12), 0 0 30px rgba(0, 212, 255, 0.08);
+    transition: box-shadow 0.3s ease;
 }
 
 .videos-swiper .video-wrapper {
     position: relative;
     padding-top: 56.25%;
     background: rgba(10, 10, 15, 0.85);
+}
+
+.videos-swiper .video-wrapper video {
+    transition: opacity 1s ease-in-out;
 }
 
 .videos-swiper .swiper-button-next,
