@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -76,19 +77,39 @@
             <h2>Proyectos Realizados</h2>
             <p>Una selección de trabajos que conectan diseño, detalle y precisión técnica en cada pieza impresa en 3D.</p>
         </div>
-        <div class="project-grid">
-            <article class="project-card">
-                <h3>Figura coleccionable</h3>
-                <p>Escultura detallada para exposiciones y coleccionistas, con acabados premium y geometría compleja.</p>
-            </article>
-            <article class="project-card">
-                <h3>Prototipo funcional</h3>
-                <p>Desarrollo de piezas de alta fidelidad para prueba de forma, función y ensamblaje rápido.</p>
-            </article>
-            <article class="project-card">
-                <h3>Escultura de exhibición</h3>
-                <p>Composiciones artísticas para interiores, con texturas finas y presencia visual de alto impacto.</p>
-            </article>
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <article class="project-card video-card">
+                        <div class="video-wrapper">
+                            <video src="estdio.mp4" autoplay muted loop playsinline preload="auto"></video>
+                        </div>
+                        <h3>Estudio en Acción</h3>
+                        <p>Ve nuestro proceso creativo en tiempo real, desde el diseño digital hasta la impresión final.</p>
+                    </article>
+                </div>
+                <div class="swiper-slide">
+                    <article class="project-card">
+                        <h3>Figura coleccionable</h3>
+                        <p>Escultura detallada para exposiciones y coleccionistas, con acabados premium y geometría compleja.</p>
+                    </article>
+                </div>
+                <div class="swiper-slide">
+                    <article class="project-card">
+                        <h3>Prototipo funcional</h3>
+                        <p>Desarrollo de piezas de alta fidelidad para prueba de forma, función y ensamblaje rápido.</p>
+                    </article>
+                </div>
+                <div class="swiper-slide">
+                    <article class="project-card">
+                        <h3>Escultura de exhibición</h3>
+                        <p>Composiciones artísticas para interiores, con texturas finas y presencia visual de alto impacto.</p>
+                    </article>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
     </section>
 
@@ -125,5 +146,35 @@
         </div>
     </section>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const swiper = new Swiper('.swiper', {
+                slidesPerView: 1,
+                spaceBetween: 20,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                breakpoints: {
+                    768: {
+                        slidesPerView: 2,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                    },
+                },
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                loop: true,
+            });
+        });
+    </script>
 </body>
 </html>
