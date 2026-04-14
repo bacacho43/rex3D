@@ -403,6 +403,78 @@ header {
     line-height: 1.75;
 }
 
+.contact-section {
+    padding: 5rem 2rem;
+    background: linear-gradient(180deg, rgba(1, 1, 5, 0.96) 0%, rgba(4, 4, 10, 1) 100%);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.8rem 1.5rem;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+}
+
+.contact-card:hover {
+    transform: translateY(-6px);
+    border-color: #00d4ff;
+    box-shadow: 0 18px 50px rgba(0, 212, 255, 0.16);
+    background: rgba(0, 212, 255, 0.08);
+}
+
+.contact-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 20px;
+    display: grid;
+    place-items: center;
+    font-size: 1.6rem;
+    color: #ffffff;
+    flex-shrink: 0;
+}
+
+.contact-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.4rem;
+    color: #ffffff;
+}
+
+.contact-card p {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.contact-whatsapp .contact-icon {
+    background: #25d366;
+}
+
+.contact-instagram .contact-icon {
+    background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #cc2a7d 50%, #bc1888 75%, #833ab4 100%);
+}
+
+.contact-facebook .contact-icon {
+    background: #1877f2;
+}
+
+.contact-email .contact-icon {
+    background: rgba(255, 255, 255, 0.12);
+}
+
 /* TikTok Carousel Section */
 .tiktok-carousel {
     padding: 5rem 2rem;
@@ -637,7 +709,22 @@ footer p {
     .swiper-wrapper {
         overflow-x: auto;
     }
-}}
+}
+
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .contact-card {
+        padding: 1.4rem 1.2rem;
+    }
+
+    .contact-icon {
+        width: 56px;
+        height: 56px;
+    }
+}
 
 @media (max-width: 480px) {
     .nav-container {
@@ -693,6 +780,19 @@ footer p {
 
     .video-card {
         max-width: 100%;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-card {
+        justify-content: flex-start;
+    }
+
+    .contact-icon {
+        width: 52px;
+        height: 52px;
     }
 
     .footer-content {
