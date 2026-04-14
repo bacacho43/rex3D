@@ -35,8 +35,7 @@ header {
     backdrop-filter: blur(14px);
     z-index: 1000;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    transform: translateY(0);
-    transition: transform 0.4s ease-in-out;
+    transition: transform 0.3s ease-in-out;
 }
 
 header.nav-hidden {
