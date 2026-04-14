@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REX 3D | Esculturas Premium en Impresión 3D</title>
+    <title>REX 3D STUDIO | Esculturas Premium en Impresión 3D</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -12,24 +16,27 @@
         <nav class="navbar">
             <div class="nav-container">
                 <div class="logo">
-                    <span class="rex">REX</span><span class="d3">3D</span>
+                    <img src="logo-rex.png" alt="Logo REX 3D STUDIO" class="logo-image">
+                    <div class="brand-text">
+                        <span class="rex">REX</span><span class="d3">3D</span>
+                        <span class="studio">STUDIO</span>
+                    </div>
                 </div>
                 
                 <div class="search-container">
-                    <input type="text" class="search-input" placeholder="Buscar esculturas...">
+                    <input type="text" class="search-input" placeholder="Buscar tu proyecto...">
                     <button class="search-btn"><i class="fas fa-search"></i></button>
                 </div>
 
                 <ul class="nav-links">
-                    <li><a href="#">Tienda</a></li>
-                    <li><a href="#">Nosotros</a></li>
-                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#proyectos">Proyectos</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
                 </ul>
 
                 <div class="nav-icons">
-                    <a href="#" class="icon-link"><i class="fas fa-heart"></i> <span class="icon-text">Wishlist (0)</span></a>
-                    <a href="#" class="icon-link"><i class="fas fa-shopping-cart"></i> <span class="icon-text">Carrito (0)</span></a>
-                    <a href="#" class="icon-link"><i class="fas fa-user"></i> <span class="icon-text">Cuenta</span></a>
+                    <a href="https://www.tiktok.com/@rex3d.studio" target="_blank" rel="noreferrer" class="icon-link"><i class="fab fa-tiktok"></i> <span class="icon-text">TikTok</span></a>
+                    <a href="#contacto" class="icon-link"><i class="fas fa-user"></i> <span class="icon-text">Contacto</span></a>
                 </div>
             </div>
         </nav>
@@ -40,13 +47,137 @@
         <div class="hero-content">
             <h3>ESCULTURAS PREMIUM</h3>
             <h1>Arte Impreso en 3D</h1>
-            <p>Descubre piezas únicas de diseño, creadas con la más avanzada tecnología de impresión 3D. Elegancia y precisión en cada detalle.</p>
-            <button class="btn-main">Explorar Colección</button>
+            <p>Transforma tu idea en una pieza tangible con precisión artística. Envíanos tu proyecto y recibe un diseño exclusivo hecho a medida.</p>
+            <button class="btn-main">Cotizar mi Proyecto</button>
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2023 REX 3D. Todos los derechos reservados.</p>
+    <section class="intro" id="servicios">
+        <div class="intro-content">
+            <p>En REX 3D fusionamos tecnología de vanguardia con visión artística. Nos especializamos en la creación de piezas únicas, figuras coleccionables y prototipos de alta fidelidad.</p>
+        </div>
+    </section>
+
+    <section class="creative-process">
+        <div class="process-header">
+            <p class="section-subtitle">Proceso Creativo</p>
+            <h2>Cómo llevamos tu idea a la realidad</h2>
+            <p>Descubre el flujo de trabajo detrás de cada pieza: desde el boceto digital hasta la impresión 3D y el acabado final.</p>
+        </div>
+        <div class="video-card">
+            <div class="video-wrapper">
+                <!-- Reemplaza el enlace src con tu video de TikTok o video de maquinaria -->
+                <iframe src="https://www.tiktok.com/embed/v2/7032373458751661319" title="Proceso Creativo REX 3D" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects" id="proyectos">
+        <div class="section-header">
+            <p class="section-subtitle">Galería de Trabajos</p>
+            <h2>Proyectos Realizados</h2>
+            <p>Una selección de trabajos que conectan diseño, detalle y precisión técnica en cada pieza impresa en 3D.</p>
+        </div>
+        <div class="project-grid">
+            <article class="project-card">
+                <h3>Figura coleccionable</h3>
+                <p>Escultura detallada para exposiciones y coleccionistas, con acabados premium y geometría compleja.</p>
+            </article>
+            <article class="project-card">
+                <h3>Prototipo funcional</h3>
+                <p>Desarrollo de piezas de alta fidelidad para prueba de forma, función y ensamblaje rápido.</p>
+            </article>
+            <article class="project-card">
+                <h3>Escultura de exhibición</h3>
+                <p>Composiciones artísticas para interiores, con texturas finas y presencia visual de alto impacto.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="tiktok-carousel" id="tiktok-videos">
+        <div class="section-header">
+            <p class="section-subtitle">En las Redes</p>
+            <h2>Historias en TikTok</h2>
+            <p>Sigue nuestro proceso creativo, tips de diseño y proyectos en tiempo real.</p>
+        </div>
+        <div class="swiper tiktok-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide tiktok-video-slide">
+                    <a href="https://www.tiktok.com/@rex3d.studio   /video/7607540423086869780" target="_blank" class="tiktok-video-container video-card">
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=225&fit=crop" alt="Escultura 3D REX" class="tiktok-thumbnail">
+                        <div class="play-overlay">
+                            <i class="fab fa-tiktok"></i>
+                        </div>
+                    </a>
+                </div>
+                <div class="swiper-slide tiktok-video-slide">
+                    <a href="https://www.tiktok.com/@rex3d.studio/video/7605672891727957269" target="_blank" class="tiktok-video-container video-card">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=225&fit=crop" alt="Impresora 3D en acción" class="tiktok-thumbnail">
+                        <div class="play-overlay">
+                            <i class="fab fa-tiktok"></i>
+                        </div>
+                    </a>
+                </div>
+                <div class="swiper-slide tiktok-video-slide">
+                    <a href="https://www.tiktok.com/@rex3d.studio/video/7605146749274967317" target="_blank" class="tiktok-video-container video-card">
+                        <img src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=400&h=225&fit=crop" alt="Modelo 3D detallado" class="tiktok-thumbnail">
+                        <div class="play-overlay">
+                            <i class="fab fa-tiktok"></i>
+                        </div>
+                    </a>
+                </div>
+                <div class="swiper-slide tiktok-video-slide">
+                    <a href="https://www.tiktok.com/@rex3d.studio/video/7603160496778251541" target="_blank" class="tiktok-video-container video-card">
+                        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=400&h=225&fit=crop" alt="Objeto impreso en 3D" class="tiktok-thumbnail">
+                        <div class="play-overlay">
+                            <i class="fab fa-tiktok"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </section>
+
+        <div class="footer-content">
+            <p>&copy; 2023 REX 3D STUDIO. Todos los derechos reservados.</p>
+            <div class="social-links">
+                <a href="https://www.tiktok.com/@rex3d.studio" target="_blank" rel="noreferrer" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Behance"><i class="fab fa-behance"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper('.tiktok-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            centeredSlides: true,
+            autoHeight: false,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 15,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                    centeredSlides: false,
+                },
+            },
+        });
+    </script>
 </body>
 </html>
