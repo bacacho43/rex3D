@@ -64,17 +64,25 @@
             <h2>Cómo llevamos tu idea a la realidad</h2>
             <p>Descubre el flujo de trabajo detrás de cada pieza: desde el boceto digital hasta la impresión 3D y el acabado final.</p>
         </div>
-        <div class="videos-container">
-            <div class="video-card">
-                <div class="video-wrapper">
-                    <video class="process-video" src="timelaps.mp4" autoplay muted loop playsinline preload="auto"></video>
+        <div class="videos-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <video class="process-video" src="timelaps.mp4" autoplay muted playsinline preload="auto"></video>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <video class="process-video" src="estdio.mp4" autoplay muted playsinline preload="auto"></video>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="video-card">
-                <div class="video-wrapper">
-                    <video class="process-video" src="estdio.mp4" autoplay muted loop playsinline preload="auto"></video>
-                </div>
-            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
     </section>
 
@@ -147,6 +155,17 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            const videosSwiper = new Swiper('.videos-swiper', {
+                slidesPerView: 1,
+                spaceBetween: 20,
+                navigation: {
+                    nextEl: '.videos-swiper .swiper-button-next',
+                    prevEl: '.videos-swiper .swiper-button-prev',
+                },
+                loop: true,
+                autoplay: false, // Desactivado porque lo manejamos con el ended del video
+            });
+
             const swiper = new Swiper('.swiper', {
                 slidesPerView: 1,
                 spaceBetween: 20,
@@ -171,6 +190,14 @@
                     disableOnInteraction: false,
                 },
                 loop: true,
+            });
+
+            // Manejar autoplay basado en el final del video
+            const videos = document.querySelectorAll('.videos-swiper video');
+            videos.forEach((video) => {
+                video.addEventListener('ended', () => {
+                    videosSwiper.slideNext();
+                });
             });
         });
     </script>
