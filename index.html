@@ -7,7 +7,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -94,11 +93,6 @@
     </section>
 
     <section class="contact-section" id="contacto">
-        <div class="section-header">
-            <p class="section-subtitle">Contacto</p>
-            <h2>Hablemos de tu proyecto</h2>
-            <p>Elige la forma más rápida de comunicarte con nosotros y recibe una respuesta premium.</p>
-        </div>
         <div class="contact-grid">
             <a href="https://wa.me/" target="_blank" rel="noreferrer" class="contact-card contact-whatsapp">
                 <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
@@ -131,63 +125,6 @@
         </div>
     </section>
 
-    <section class="tiktok-carousel" id="tiktok-videos">
-        <div class="swiper tiktok-swiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide tiktok-video-slide">
-                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@rex3d.studio/video/7322986423023242502" data-unique-id="7322986423023242502"><section>Cargando video...</section></blockquote>
-                </div>
-                <div class="swiper-slide tiktok-video-slide">
-                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@rex3d.studio/video/7323381467471318278" data-unique-id="7323381467471318278"><section>Cargando video...</section></blockquote>
-                </div>
-                <div class="swiper-slide tiktok-video-slide">
-                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@rex3d.studio/video/7324128014563642630" data-unique-id="7324128014563642630"><section>Cargando video...</section></blockquote>
-                </div>
-                <div class="swiper-slide tiktok-video-slide">
-                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@rex3d.studio/video/7325241032483589382" data-unique-id="7325241032483589382"><section>Cargando video...</section></blockquote>
-                </div>
-            </div>
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
-        </div>
-    </section>
-
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-        const swiper = new Swiper('.tiktok-swiper', {
-            slidesPerView: 1,
-            spaceBetween: 20,
-            centeredSlides: true,
-            autoHeight: false,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            breakpoints: {
-                640: {
-                    slidesPerView: 2,
-                    spaceBetween: 15,
-                },
-                1024: {
-                    slidesPerView: 3,
-                    spaceBetween: 20,
-                    centeredSlides: false,
-                },
-            },
-        });
-
-        // Reinicializar TikTok embeds cuando Swiper cambia de slide
-        swiper.on('slideChange', function() {
-            if (window.tiktok && window.tiktok.Embed) {
-                window.tiktok.Embed.lib.render(document.querySelector('.swiper-wrapper'));
-            }
-        });
-    </script>
     <script async src="https://www.tiktok.com/embed.js"></script>
 </body>
 </html>
