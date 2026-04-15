@@ -31,11 +31,11 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.72);
+    background-color: rgba(0, 0, 0, 0.9);
     backdrop-filter: blur(10px);
     z-index: 1000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
+    border-bottom: none;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 header.nav-hidden {
@@ -362,7 +362,7 @@ header.nav-hidden {
     overflow: hidden;
     border: 2px solid rgba(0, 212, 255, 0.35);
     box-shadow: 0 20px 60px rgba(0, 212, 255, 0.12), 0 0 30px rgba(0, 212, 255, 0.08);
-    transition: box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .videos-swiper .video-wrapper {
