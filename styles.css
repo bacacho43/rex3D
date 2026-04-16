@@ -280,6 +280,32 @@ header.nav-hidden {
     margin: 0 auto;
 }
 
+.parallax-bg {
+    background-image: url('https://images.unsplash.com/photo-1631553127988-347671759247?q=80&w=1920');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.parallax-content {
+    text-align: center;
+    width: 100%;
+}
+
+.parallax-bg h2 {
+    color: #ffffff;
+    font-size: 2.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    margin: 0;
+}
+
 .intro-content p {
     font-size: 1.2rem;
     color: rgba(255, 255, 255, 0.88);
