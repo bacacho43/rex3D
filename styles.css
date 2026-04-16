@@ -295,6 +295,9 @@ header.nav-hidden {
 .parallax-content {
     text-align: center;
     width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 18px;
 }
 
 .parallax-bg h2 {
