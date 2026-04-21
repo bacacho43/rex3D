@@ -281,7 +281,7 @@ header.nav-hidden {
 }
 
 .parallax-bg {
-    background-image: url('https://images.unsplash.com/photo-1631553127988-347671759247?q=80&w=1920');
+    background-image: url('./parallax-bg.jpg');
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
