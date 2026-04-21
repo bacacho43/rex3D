@@ -40,6 +40,11 @@
         </nav>
     </header>
 
+    <!-- Dinosaurio Colgado en Barra de Scroll -->
+    <div class="dino-scrollbar">
+        <img src="dino-scroll.png.jpeg" alt="Dinosaurio" class="dino-img">
+    </div>
+
     <main>
     <section class="hero">
         <div class="hero-overlay"></div>
@@ -160,12 +165,22 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        // Scroll behavior para ocultar/mostrar header y cambiar transparencia
+        // Scroll behavior para ocultar/mostrar header, cambiar transparencia y mover dinosaurio
         let lastScrollTop = 0;
         const header = document.getElementById('main-header');
+        const dinoScrollbar = document.querySelector('.dino-scrollbar');
         
         window.addEventListener('scroll', () => {
             const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = scrollHeight > 0 ? (scrollTop / scrollHeight) : 0;
+            
+            // Mover dinosaurio según el progreso del scroll
+            if (dinoScrollbar) {
+                const maxScroll = window.innerHeight - 70;
+                const dinoTop = scrollPercent * maxScroll;
+                dinoScrollbar.style.top = dinoTop + 'px';
+            }
             
             // Cambiar fondo del header cuando hay scroll
             if (scrollTop > 100) {

@@ -932,3 +932,33 @@ footer p {
 ::-webkit-scrollbar-track {
     background: rgba(0, 0, 0, 0.1);
 }
+
+/* Dinosaurio Colgado - Scrollbar Handler */
+.dino-scrollbar {
+    position: fixed;
+    right: -5px;
+    top: 0;
+    z-index: 9999;
+    pointer-events: none;
+    height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    padding-top: 10px;
+}
+
+.dino-img {
+    width: 50px;
+    height: auto;
+    max-width: 50px;
+    transform: rotate(-15deg) translateX(15px);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes dinoDance {
+    from {
+        top: 0;
+    }
+    to {
+        top: calc(100vh - 70px);
+    }
+}
