@@ -305,7 +305,7 @@ header.nav-hidden {
     font-size: 2.8rem;
     letter-spacing: 1px;
     text-transform: uppercase;
-    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.8), 0 10px 30px rgba(0, 0, 0, 0.9);
     margin: 0;
 }
 
@@ -888,4 +888,22 @@ footer p {
         padding: 0 1rem;
         justify-content: center;
     }
+}
+
+/* Custom Scrollbar - Nickelodeon Style */
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-image: url('./logo.jpeg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 10px;
+    border: 2px solid rgba(0, 212, 255, 0.3);
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
 }
