@@ -947,12 +947,12 @@ footer p {
 }
 
 .dino-img {
-    width: 120px;
+    width: 150px;
     height: auto;
-    max-width: 120px;
+    max-width: 150px;
     transform: rotate(-15deg) translateX(15px);
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
-    mix-blend-mode: multiply;
+    mix-blend-mode: screen;
 }
 
 @keyframes dinoDance {
