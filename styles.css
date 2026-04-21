@@ -5,6 +5,14 @@
     box-sizing: border-box;
 }
 
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     background-color: #000000;
@@ -12,7 +20,9 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     animation: fadeIn 0.9s ease-in-out both;
-    padding-top: 70px;
+    padding-top: 0;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 212, 255, 0.6) rgba(0, 0, 0, 0.1);
 }
 
 @keyframes fadeIn {
@@ -31,18 +41,23 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.95) !important;
+    background-color: transparent;
     background-image: none !important;
     backdrop-filter: blur(10px);
     z-index: 1000;
     border-bottom: none !important;
     border: none !important;
     box-shadow: none !important;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 header.nav-hidden {
     transform: translateY(-100%);
+}
+
+header.scrolled {
+    background-color: rgba(0, 0, 0, 0.95) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .navbar {
@@ -199,6 +214,7 @@ header.nav-hidden {
 /* Hero Section */
 .hero {
     height: 100vh;
+    width: 100%;
     background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
     background-size: cover;
     background-position: center;
@@ -207,6 +223,8 @@ header.nav-hidden {
     align-items: center;
     justify-content: center;
     position: relative;
+    margin-top: 0;
+    padding-top: 0;
 }
 
 .hero-overlay {
@@ -281,8 +299,8 @@ header.nav-hidden {
 }
 
 .parallax-bg {
-    background-image: url('./parallax-bg.jpg');
-    background-attachment: fixed;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./logo.jpeg');
+    background-attachment: fixed !important;
     background-size: cover;
     background-position: center;
     height: 450px;
@@ -899,18 +917,16 @@ footer p {
 }
 
 ::-webkit-scrollbar-thumb {
-    background-image: url('./dino-scroll.png.jpeg');
-    background-size: 80%;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: rgba(0, 212, 255, 0.2);
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.6) 0%, rgba(0, 150, 150, 0.6) 50%, rgba(0, 100, 120, 0.6) 100%);
     border-radius: 10px;
-    border: 2px solid rgba(0, 212, 255, 0.5);
+    border: 2px solid rgba(0, 212, 255, 0.8);
     cursor: pointer;
+    box-shadow: 0 0 8px rgba(0, 212, 255, 0.4);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(0, 212, 255, 0.4);
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.9) 0%, rgba(0, 150, 150, 0.9) 50%, rgba(0, 100, 120, 0.9) 100%);
+    box-shadow: 0 0 12px rgba(0, 212, 255, 0.8);
 }
 
 ::-webkit-scrollbar-track {

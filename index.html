@@ -160,13 +160,21 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        // Scroll behavior para ocultar/mostrar header
+        // Scroll behavior para ocultar/mostrar header y cambiar transparencia
         let lastScrollTop = 0;
         const header = document.getElementById('main-header');
         
         window.addEventListener('scroll', () => {
             const scrollTop = window.scrollY || document.documentElement.scrollTop;
             
+            // Cambiar fondo del header cuando hay scroll
+            if (scrollTop > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            // Hide/show header al scroll
             if (scrollTop > lastScrollTop) {
                 // Scroll hacia abajo - ocultar header
                 header.classList.add('nav-hidden');
