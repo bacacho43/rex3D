@@ -917,7 +917,7 @@ footer p {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, rgba(0, 212, 255, 0.6) 0%, rgba(0, 150, 150, 0.6) 50%, rgba(0, 100, 120, 0.6) 100%);
+    background: transparent;
     border-radius: 10px;
     border: 2px solid rgba(0, 212, 255, 0.8);
     cursor: pointer;
@@ -925,7 +925,7 @@ footer p {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, rgba(0, 212, 255, 0.9) 0%, rgba(0, 150, 150, 0.9) 50%, rgba(0, 100, 120, 0.9) 100%);
+    background: rgba(0, 212, 255, 0.2);
     box-shadow: 0 0 12px rgba(0, 212, 255, 0.8);
 }
 
@@ -947,9 +947,9 @@ footer p {
 }
 
 .dino-img {
-    width: 50px;
+    width: 70px;
     height: auto;
-    max-width: 50px;
+    max-width: 70px;
     transform: rotate(-15deg) translateX(15px);
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
 }
@@ -979,7 +979,7 @@ footer p {
 }
 
 .preloader-dino {
-    width: 100px;
+    width: 200px;
     height: auto;
     animation: bounce 1s infinite;
 }
