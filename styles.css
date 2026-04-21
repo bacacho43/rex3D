@@ -295,7 +295,7 @@ header.nav-hidden {
 .parallax-content {
     text-align: center;
     width: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7);
     padding: 20px;
     border-radius: 18px;
 }
@@ -305,7 +305,7 @@ header.nav-hidden {
     font-size: 2.8rem;
     letter-spacing: 1px;
     text-transform: uppercase;
-    text-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
     margin: 0;
 }
 
