@@ -294,10 +294,13 @@ header.nav-hidden {
 
 .parallax-content {
     text-align: center;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 20px;
+    width: 90%;
+    max-width: 900px;
+    background: rgba(0, 0, 0, 0.65);
+    padding: 40px 30px;
     border-radius: 18px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
 .parallax-bg h2 {
@@ -896,12 +899,18 @@ footer p {
 }
 
 ::-webkit-scrollbar-thumb {
-    background-image: url('./logo.jpeg');
-    background-size: contain;
+    background-image: url('./dino-scroll.png.jpeg');
+    background-size: 80%;
     background-repeat: no-repeat;
     background-position: center;
+    background-color: rgba(0, 212, 255, 0.2);
     border-radius: 10px;
-    border: 2px solid rgba(0, 212, 255, 0.3);
+    border: 2px solid rgba(0, 212, 255, 0.5);
+    cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 212, 255, 0.4);
 }
 
 ::-webkit-scrollbar-track {
