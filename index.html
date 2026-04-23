@@ -80,6 +80,9 @@
             <p>Descubre el flujo de trabajo detrás de cada pieza: desde el boceto digital hasta la impresión 3D y el acabado final.</p>
         </div>
         <div class="videos-swiper">
+            <div class="video-overlay">
+                <div class="overlay-text">Arte impreso en 3D</div>
+            </div>
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <div class="video-card">
@@ -266,6 +269,28 @@
                 });
             });
         });
+
+        // Efecto de fade out para el texto centrado en creative-process
+        const overlayText = document.querySelector('.overlay-text');
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const creativeProcess = document.querySelector('.creative-process');
+            const creativeTop = creativeProcess.offsetTop;
+            const creativeHeight = creativeProcess.offsetHeight;
+
+            // Calcular el progreso del scroll dentro de la sección
+            const scrollInSection = scrollTop - creativeTop;
+            const sectionProgress = Math.max(0, Math.min(1, scrollInSection / (windowHeight * 0.5)));
+
+            // Aplicar opacity inversa
+            if (overlayText) {
+                overlayText.style.opacity = 1 - sectionProgress;
+            }
+        });
     </script>
+    <div class="dino-hanging-container">
+        <img src="new dino.jpeg" alt="Dinosaurio Colgado" class="dino-hanging-img">
+    </div>
 </body>
 </html>
