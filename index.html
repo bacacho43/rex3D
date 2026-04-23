@@ -270,22 +270,13 @@
             });
         });
 
-        // Efecto de fade out para el texto centrado en creative-process
-        const overlayText = document.querySelector('.overlay-text');
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.scrollY;
-            const windowHeight = window.innerHeight;
-            const creativeProcess = document.querySelector('.creative-process');
-            const creativeTop = creativeProcess.offsetTop;
-            const creativeHeight = creativeProcess.offsetHeight;
-
-            // Calcular el progreso del scroll dentro de la sección
-            const scrollInSection = scrollTop - creativeTop;
-            const sectionProgress = Math.max(0, Math.min(1, scrollInSection / (windowHeight * 0.5)));
-
-            // Aplicar opacity inversa
-            if (overlayText) {
-                overlayText.style.opacity = 1 - sectionProgress;
+        // Efecto de fade out para el texto centrado en creative-process (Efecto Ferrari)
+        window.addEventListener('scroll', function() {
+            const text = document.querySelector('.overlay-text');
+            if (text) {
+                let scrollValue = window.scrollY;
+                // Se vuelve transparente conforme bajas (500 es la velocidad de desvanecido)
+                text.style.opacity = Math.max(0, 1 - (scrollValue / 500));
             }
         });
     </script>
