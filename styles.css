@@ -690,7 +690,7 @@ header.scroll-active {
     width: min(96vw, 760px);
     max-height: min(94vh, 860px);
     overflow-y: auto;
-    padding: 2rem;
+    padding: 2.6rem;
     border-radius: 26px;
     background: rgba(17, 17, 17, 0.96);
     border: 1px solid #00f3ff;
@@ -756,6 +756,7 @@ header.scroll-active {
 .quote-form label {
     display: grid;
     gap: 0.6rem;
+    margin-bottom: 20px;
     color: rgba(255,255,255,0.9);
     font-weight: 500;
 }
@@ -855,7 +856,12 @@ header.scroll-active {
 .btn-secondary:hover,
 .whatsapp-action:hover {
     transform: translateY(-2px);
-    background: rgba(0,243,255,0.12);
+    background: rgba(0,243,255,0.22);
+    border-color: rgba(0,243,255,0.35);
+}
+
+.step-footer {
+    margin-top: 1.5rem;
 }
 
 .whatsapp-action {
