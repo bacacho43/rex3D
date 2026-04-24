@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REX 3D STUDIO | Esculturas Premium en Impresión 3D</title>
+    <title>REX 3D STUDIO | Esculturas Premium en ImpresiÃ³n 3D</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -39,7 +39,7 @@
                 </ul>
 
                 <div class="nav-icons">
-                    <a href="#contacto" class="icon-link"><i class="fas fa-user"></i> <span class="icon-text">Cotizar</span></a>
+                    <a href="#" class="icon-link open-quote"><i class="fas fa-user"></i> <span class="icon-text">Cotizar</span></a>
                 </div>
             </div>
         </nav>
@@ -51,28 +51,93 @@
         <div class="hero-content">
             <h3>ESCULTURAS PREMIUM</h3>
             <h1>Arte Impreso en 3D</h1>
-            <p>Transforma tu idea en una pieza tangible con precisión artística. Envíanos tu proyecto y recibe un diseño exclusivo hecho a medida.</p>
-            <button class="btn-main">Cotizar mi Proyecto</button>
+            <p>Transforma tu idea en una pieza tangible con precisiÃ³n artÃ­stica. EnvÃ­anos tu proyecto y recibe un diseÃ±o exclusivo hecho a medida.</p>
+            <button class="btn-main open-quote">Cotizar mi Proyecto</button>
         </div>
     </section>
 
+    <div class="quote-modal" id="quoteModal" aria-hidden="true">
+        <div class="quote-modal-backdrop"></div>
+        <div class="quote-modal-card">
+            <button type="button" class="modal-close" aria-label="Cerrar cotizaciÃ³n">Ã—</button>
+            <div class="modal-heading">
+                <p class="modal-eyebrow">Solicitud de CotizaciÃ³n</p>
+                <h2>Calcula tu proyecto 3D</h2>
+                <p>Completa los datos esenciales y recibe una propuesta en estilo futurista.</p>
+            </div>
+            <form class="quote-form">
+                <label>
+                    Acabado
+                    <select id="acabadoSelect" name="acabado">
+                        <option value="Filamento">Filamento</option>
+                        <option value="Primer">Primer</option>
+                        <option value="Primer Rellenador">Primer Rellenador</option>
+                    </select>
+                </label>
+                <div class="conditional-group" id="primerColors" style="display: none;">
+                    <label>
+                        Color de Primer
+                        <select id="colorPrimer" name="colorPrimer">
+                            <option value="Blanco">Blanco</option>
+                            <option value="Negro">Negro</option>
+                            <option value="Gris">Gris</option>
+                        </select>
+                    </label>
+                </div>
+                <label>
+                    Acabado Especial
+                    <select name="acabadoEspecial">
+                        <option value="Mate">Mate</option>
+                        <option value="Brillante">Brillante</option>
+                        <option value="Tornasol">Tornasol</option>
+                        <option value="MC00">MC00</option>
+                        <option value="Hidrocromo">Hidrocromo</option>
+                    </select>
+                </label>
+                <div class="dimension-grid">
+                    <label>
+                        Altura (cm)
+                        <input type="number" name="altura" min="0" step="0.1" placeholder="Altura">
+                    </label>
+                    <label>
+                        Ancho (cm)
+                        <input type="number" name="ancho" min="0" step="0.1" placeholder="Ancho">
+                    </label>
+                    <label>
+                        Profundidad (cm)
+                        <input type="number" name="profundidad" min="0" step="0.1" placeholder="Profundidad">
+                    </label>
+                </div>
+                <label class="file-upload">
+                    Foto de Referencia
+                    <input type="file" name="referencia" accept="image/*">
+                </label>
+                <label>
+                    Especificaciones adicionales
+                    <textarea name="especificaciones" rows="4" placeholder="Detalles del proyecto, materiales, uso final..."></textarea>
+                </label>
+                <button type="button" class="btn-secondary quote-action">Calcular CotizaciÃ³n (PrÃ³ximamente con IA)</button>
+            </form>
+        </div>
+    </div>
+
     <section class="intro" id="servicios">
         <div class="intro-content">
-            <p>En REX 3D fusionamos tecnología de vanguardia con visión artística. Nos especializamos en la creación de piezas únicas, figuras coleccionables y prototipos de alta fidelidad.</p>
+            <p>En REX 3D fusionamos tecnologÃ­a de vanguardia con visiÃ³n artÃ­stica. Nos especializamos en la creaciÃ³n de piezas Ãºnicas, figuras coleccionables y prototipos de alta fidelidad.</p>
         </div>
     </section>
 
     <section class="parallax-bg">
         <div class="parallax-content">
-            <h2>Innovación en cada capa</h2>
+            <h2>InnovaciÃ³n en cada capa</h2>
         </div>
     </section>
 
     <section class="creative-process">
         <div class="process-header">
             <p class="section-subtitle">Proceso Creativo</p>
-            <h2>Cómo llevamos tu idea a la realidad</h2>
-            <p>Descubre el flujo de trabajo detrás de cada pieza: desde el boceto digital hasta la impresión 3D y el acabado final.</p>
+            <h2>CÃ³mo llevamos tu idea a la realidad</h2>
+            <p>Descubre el flujo de trabajo detrÃ¡s de cada pieza: desde el boceto digital hasta la impresiÃ³n 3D y el acabado final.</p>
         </div>
         <div class="videos-swiper">
             <div class="video-overlay">
@@ -101,28 +166,28 @@
 
     <section class="projects" id="proyectos">
         <div class="section-header">
-            <p class="section-subtitle">Galería de Trabajos</p>
+            <p class="section-subtitle">GalerÃ­a de Trabajos</p>
             <h2>Proyectos Realizados</h2>
-            <p>Una selección de trabajos que conectan diseño, detalle y precisión técnica en cada pieza impresa en 3D.</p>
+            <p>Una selecciÃ³n de trabajos que conectan diseÃ±o, detalle y precisiÃ³n tÃ©cnica en cada pieza impresa en 3D.</p>
         </div>
         <div class="swiper">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <article class="project-card">
                         <h3>Figura coleccionable</h3>
-                        <p>Escultura detallada para exposiciones y coleccionistas, con acabados premium y geometría compleja.</p>
+                        <p>Escultura detallada para exposiciones y coleccionistas, con acabados premium y geometrÃ­a compleja.</p>
                     </article>
                 </div>
                 <div class="swiper-slide">
                     <article class="project-card">
                         <h3>Prototipo funcional</h3>
-                        <p>Desarrollo de piezas de alta fidelidad para prueba de forma, función y ensamblaje rápido.</p>
+                        <p>Desarrollo de piezas de alta fidelidad para prueba de forma, funciÃ³n y ensamblaje rÃ¡pido.</p>
                     </article>
                 </div>
                 <div class="swiper-slide">
                     <article class="project-card">
-                        <h3>Escultura de exhibición</h3>
-                        <p>Composiciones artísticas para interiores, con texturas finas y presencia visual de alto impacto.</p>
+                        <h3>Escultura de exhibiciÃ³n</h3>
+                        <p>Composiciones artÃ­sticas para interiores, con texturas finas y presencia visual de alto impacto.</p>
                     </article>
                 </div>
             </div>
@@ -138,7 +203,7 @@
                 <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
                 <div>
                     <h3>WhatsApp</h3>
-                    <p>Mensaje rápido</p>
+                    <p>Mensaje rÃ¡pido</p>
                 </div>
             </a>
             <a href="https://www.instagram.com/rex3d.studio/" target="_blank" rel="noreferrer" class="contact-card contact-instagram">
@@ -159,7 +224,7 @@
                 <div class="contact-icon"><i class="fas fa-envelope"></i></div>
                 <div>
                     <h3>Correo</h3>
-                    <p>Escríbenos</p>
+                    <p>EscrÃ­benos</p>
                 </div>
             </a>
         </div>
@@ -168,7 +233,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        // Preloader - Ocultar después de 2 segundos
+        // Preloader - Ocultar despuÃ©s de 2 segundos
         window.addEventListener('load', () => {
             setTimeout(() => {
                 const preloader = document.getElementById('preloader');
@@ -263,6 +328,39 @@
                 // Se vuelve transparente conforme bajas (500 es la velocidad de desvanecido)
                 text.style.opacity = Math.max(0, 1 - (scrollValue / 500));
             }
+        });
+            const quoteModal = document.getElementById('quoteModal');
+        const openQuoteButtons = document.querySelectorAll('.open-quote');
+        const closeQuoteButton = document.querySelector('.modal-close');
+        const quoteBackdrop = document.querySelector('.quote-modal-backdrop');
+        const acabadoSelect = document.getElementById('acabadoSelect');
+        const primerColors = document.getElementById('primerColors');
+
+        function toggleQuoteModal(open) {
+            quoteModal.classList.toggle('active', open);
+            quoteModal.setAttribute('aria-hidden', open ? 'false' : 'true');
+            document.body.style.overflow = open ? 'hidden' : '';
+        }
+
+        openQuoteButtons.forEach((button) => {
+            button.addEventListener('click', function (event) {
+                event.preventDefault();
+                toggleQuoteModal(true);
+            });
+        });
+
+        closeQuoteButton.addEventListener('click', function () {
+            toggleQuoteModal(false);
+        });
+
+        quoteBackdrop.addEventListener('click', function () {
+            toggleQuoteModal(false);
+        });
+
+        acabadoSelect.addEventListener('change', function () {
+            const value = acabadoSelect.value;
+            const showPrimerOptions = value === 'Primer' || value === 'Primer Rellenador';
+            primerColors.style.display = showPrimerOptions ? 'grid' : 'none';
         });
     </script>
 </body>
