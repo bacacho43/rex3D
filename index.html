@@ -52,7 +52,7 @@
             <h3>ESCULTURAS PREMIUM</h3>
             <h1>Arte Impreso en 3D</h1>
             <p>Transforma tu idea en una pieza tangible con precisiÃ³n artÃ­stica. EnvÃ­anos tu proyecto y recibe un diseÃ±o exclusivo hecho a medida.</p>
-            <button class="btn-main open-quote">Cotizar mi Proyecto</button>
+            <button id="cotizar-btn" class="btn-main open-quote">Cotizar mi Proyecto</button>
         </div>
     </section>
 
@@ -65,58 +65,74 @@
                 <h2>Calcula tu proyecto 3D</h2>
                 <p>Completa los datos esenciales y recibe una propuesta en estilo futurista.</p>
             </div>
-            <form class="quote-form">
-                <label>
-                    Acabado
-                    <select id="acabadoSelect" name="acabado">
-                        <option value="Filamento">Filamento</option>
-                        <option value="Primer">Primer</option>
-                        <option value="Primer Rellenador">Primer Rellenador</option>
-                    </select>
-                </label>
-                <div class="conditional-group" id="primerColors" style="display: none;">
+                        <form class="quote-form">
+                <div class="modal-step step-1 active">
                     <label>
-                        Color de Primer
-                        <select id="colorPrimer" name="colorPrimer">
-                            <option value="Blanco">Blanco</option>
-                            <option value="Negro">Negro</option>
-                            <option value="Gris">Gris</option>
+                        Acabado
+                        <select id="acabadoSelect" name="acabado">
+                            <option value="Filamento">Filamento</option>
+                            <option value="Primer">Primer</option>
+                            <option value="Primer Rellenador">Primer Rellenador</option>
                         </select>
                     </label>
+                    <div class="conditional-group" id="primerColors" style="display: none;">
+                        <label>
+                            Color de Primer
+                            <select id="colorPrimer" name="colorPrimer">
+                                <option value="Blanco">Blanco</option>
+                                <option value="Negro">Negro</option>
+                                <option value="Gris">Gris</option>
+                            </select>
+                        </label>
+                    </div>
+                    <label>
+                        Acabado Especial
+                        <select name="acabadoEspecial">
+                            <option value="Mate">Mate</option>
+                            <option value="Brillante">Brillante</option>
+                            <option value="Tornasol">Tornasol</option>
+                            <option value="MC00">MC00</option>
+                            <option value="Hidrocromo">Hidrocromo</option>
+                        </select>
+                    </label>
+                    <div class="step-footer">
+                        <button type="button" class="btn-secondary next-step">Siguiente</button>
+                    </div>
                 </div>
-                <label>
-                    Acabado Especial
-                    <select name="acabadoEspecial">
-                        <option value="Mate">Mate</option>
-                        <option value="Brillante">Brillante</option>
-                        <option value="Tornasol">Tornasol</option>
-                        <option value="MC00">MC00</option>
-                        <option value="Hidrocromo">Hidrocromo</option>
-                    </select>
-                </label>
-                <div class="dimension-grid">
-                    <label>
-                        Altura (cm)
-                        <input type="number" name="altura" min="0" step="0.1" placeholder="Altura">
-                    </label>
-                    <label>
-                        Ancho (cm)
-                        <input type="number" name="ancho" min="0" step="0.1" placeholder="Ancho">
-                    </label>
-                    <label>
-                        Profundidad (cm)
-                        <input type="number" name="profundidad" min="0" step="0.1" placeholder="Profundidad">
-                    </label>
+                <div class="modal-step step-2">
+                    <div class="dimension-grid">
+                        <label>
+                            Altura (cm)
+                            <input type="number" name="altura" min="0" step="0.1" placeholder="Altura">
+                        </label>
+                        <label>
+                            Ancho (cm)
+                            <input type="number" name="ancho" min="0" step="0.1" placeholder="Ancho">
+                        </label>
+                        <label>
+                            Profundidad (cm)
+                            <input type="number" name="profundidad" min="0" step="0.1" placeholder="Profundidad">
+                        </label>
+                    </div>
+                    <div class="step-footer step-controls">
+                        <button type="button" class="btn-secondary prev-step">Anterior</button>
+                        <button type="button" class="btn-secondary next-step">Siguiente</button>
+                    </div>
                 </div>
-                <label class="file-upload">
-                    Foto de Referencia
-                    <input type="file" name="referencia" accept="image/*">
-                </label>
-                <label>
-                    Especificaciones adicionales
-                    <textarea name="especificaciones" rows="4" placeholder="Detalles del proyecto, materiales, uso final..."></textarea>
-                </label>
-                <button type="button" class="btn-secondary quote-action">Calcular CotizaciÃ³n (PrÃ³ximamente con IA)</button>
+                <div class="modal-step step-3">
+                    <label class="file-upload">
+                        Foto de Referencia
+                        <input type="file" name="referencia" accept="image/*">
+                    </label>
+                    <label>
+                        Especificaciones adicionales
+                        <textarea name="especificaciones" rows="4" placeholder="Detalles del proyecto, materiales, uso final..."></textarea>
+                    </label>
+                    <div class="step-footer step-controls">
+                        <button type="button" class="btn-secondary prev-step">Anterior</button>
+                        <button type="button" class="btn-secondary quote-action">Calcular Cotización (Próximamente con IA)</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
@@ -330,16 +346,38 @@
             }
         });
             const quoteModal = document.getElementById('quoteModal');
+        const cotizarBtn = document.getElementById('cotizar-btn');
         const openQuoteButtons = document.querySelectorAll('.open-quote');
         const closeQuoteButton = document.querySelector('.modal-close');
         const quoteBackdrop = document.querySelector('.quote-modal-backdrop');
         const acabadoSelect = document.getElementById('acabadoSelect');
         const primerColors = document.getElementById('primerColors');
+        const nextStepButtons = document.querySelectorAll('.next-step');
+        const prevStepButtons = document.querySelectorAll('.prev-step');
+        const modalSteps = document.querySelectorAll('.modal-step');
+        let currentStep = 0;
 
         function toggleQuoteModal(open) {
             quoteModal.classList.toggle('active', open);
             quoteModal.setAttribute('aria-hidden', open ? 'false' : 'true');
             document.body.style.overflow = open ? 'hidden' : '';
+            if (open) {
+                showModalStep(0);
+            }
+        }
+
+        function showModalStep(index) {
+            currentStep = Math.max(0, Math.min(index, modalSteps.length - 1));
+            modalSteps.forEach((step, idx) => {
+                step.classList.toggle('active', idx === currentStep);
+            });
+        }
+
+        if (cotizarBtn) {
+            cotizarBtn.addEventListener('click', function (event) {
+                event.preventDefault();
+                toggleQuoteModal(true);
+            });
         }
 
         openQuoteButtons.forEach((button) => {
@@ -357,6 +395,18 @@
             toggleQuoteModal(false);
         });
 
+        nextStepButtons.forEach((button) => {
+            button.addEventListener('click', function () {
+                showModalStep(currentStep + 1);
+            });
+        });
+
+        prevStepButtons.forEach((button) => {
+            button.addEventListener('click', function () {
+                showModalStep(currentStep - 1);
+            });
+        });
+
         acabadoSelect.addEventListener('change', function () {
             const value = acabadoSelect.value;
             const showPrimerOptions = value === 'Primer' || value === 'Primer Rellenador';
@@ -365,3 +415,4 @@
     </script>
 </body>
 </html>
+

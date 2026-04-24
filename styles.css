@@ -331,11 +331,11 @@ header.scrolled {
     display: none;
     align-items: center;
     justify-content: center;
-    z-index: 2000;
+    z-index: 99999;
 }
 
 .quote-modal.active {
-    display: grid;
+    display: flex;
 }
 
 .quote-modal-backdrop {
@@ -406,6 +406,25 @@ header.scrolled {
 .quote-form {
     display: grid;
     gap: 1.25rem;
+}
+
+.modal-step {
+    display: none;
+}
+
+.modal-step.active {
+    display: block;
+}
+
+.step-footer {
+    margin-top: 1rem;
+}
+
+.step-controls {
+    display: flex;
+    gap: 0.85rem;
+    justify-content: flex-end;
+    flex-wrap: wrap;
 }
 
 .quote-form label {
