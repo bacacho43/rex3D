@@ -20,6 +20,10 @@
     const inputAncho = document.querySelector('[name="ancho"]');
     const inputProfundidad = document.querySelector('[name="profundidad"]');
     const textareaSpecs = document.querySelector('[name="especificaciones"]');
+    const detailOverlay = document.getElementById('detailOverlay');
+    const detailButtons = document.querySelectorAll('.detail-card');
+    const detailPanels = document.querySelectorAll('.detail-panel');
+    const detailClose = document.querySelector('.detail-close');
     let currentStep = 0;
     let ticking = false;
 
@@ -162,6 +166,17 @@
     modalBackdrop.addEventListener('click', closeModal);
     closeButton.addEventListener('click', closeModal);
 
+    detailButtons.forEach((button) => {
+        button.addEventListener('click', () => openDetailPanel(button.dataset.panel));
+    });
+
+    detailClose.addEventListener('click', closeDetailOverlay);
+    detailOverlay.addEventListener('click', (event) => {
+        if (event.target === detailOverlay) {
+            closeDetailOverlay();
+        }
+    });
+
     nextButtons.forEach((button) => {
         button.addEventListener('click', () => setStep(currentStep + 1));
     });
@@ -171,5 +186,19 @@
     });
 
     document.querySelector('.quote-action').addEventListener('click', calculateQuote);
-    selectBase.addEventListener('change', () => {});
+
+    const openDetailPanel = (panelName) => {
+        detailOverlay.classList.add('active');
+        detailOverlay.setAttribute('aria-hidden', 'false');
+        body.style.overflow = 'hidden';
+        detailPanels.forEach((panel) => {
+            panel.classList.toggle('active', panel.dataset.panel === panelName);
+        });
+    };
+
+    const closeDetailOverlay = () => {
+        detailOverlay.classList.remove('active');
+        detailOverlay.setAttribute('aria-hidden', 'true');
+        body.style.overflow = 'auto';
+    };
 });
