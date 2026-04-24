@@ -173,6 +173,7 @@
                     <label>
                         Selección de Base
                         <select id="acabadoSelect" name="tipoBase">
+                            <option value="" disabled selected>Selecciona una base</option>
                             <option value="Filamento Directo">Filamento Directo (Económico)</option>
                             <option value="Acabado Plus">Acabado Plus</option>
                             <option value="Primer Rellenador">Primer Rellenador</option>
@@ -180,7 +181,8 @@
                     </label>
                     <label>
                         Efecto Especial
-                        <select name="acabadoEspecial">
+                        <select id="efectoSelect" name="acabadoEspecial">
+                            <option value="" disabled selected>Selecciona un efecto</option>
                             <option value="Mate">Mate</option>
                             <option value="Satinado">Satinado</option>
                             <option value="Brillante">Brillante</option>
@@ -192,6 +194,7 @@
                             <option value="Metalizado Bronce">Metalizado Bronce</option>
                         </select>
                     </label>
+                    <p class="quote-error" id="quoteError"></p>
                     <div class="step-footer">
                         <button type="button" class="btn-secondary next-step">Siguiente</button>
                     </div>
@@ -199,22 +202,29 @@
                 <div class="modal-step step-2">
                     <div class="dimension-grid">
                         <label>
-                            Largo (cm)
-                            <input type="number" name="largo" min="0" step="0.1" placeholder="Largo">
+                            Largo (mm)
+                            <input type="number" name="largo" min="0" step="1" placeholder="Largo">
                         </label>
                         <label>
-                            Ancho (cm)
-                            <input type="number" name="ancho" min="0" step="0.1" placeholder="Ancho">
+                            Ancho (mm)
+                            <input type="number" name="ancho" min="0" step="1" placeholder="Ancho">
                         </label>
                         <label>
-                            Alto (cm)
-                            <input type="number" name="alto" min="0" step="0.1" placeholder="Alto">
+                            Alto (mm)
+                            <input type="number" name="alto" min="0" step="1" placeholder="Alto">
                         </label>
                     </div>
                     <div class="estimate-result" id="estimateResult"></div>
                     <div class="step-footer step-controls">
                         <button type="button" class="btn-secondary prev-step">Anterior</button>
-                        <button type="button" class="btn-secondary quote-action">Confirmar por WhatsApp</button>
+                        <button type="button" class="btn-secondary next-step">Siguiente</button>
+                    </div>
+                </div>
+                <div class="modal-step step-3">
+                    <div class="estimate-summary" id="estimateSummary"></div>
+                    <div class="step-footer step-controls">
+                        <button type="button" class="btn-secondary prev-step">Anterior</button>
+                        <button type="button" class="btn-secondary quote-action">Confirmar Cotización por WhatsApp</button>
                     </div>
                 </div>
             </form>

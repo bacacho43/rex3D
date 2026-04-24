@@ -741,16 +741,19 @@ header.scroll-active {
 }
 
 .quote-form {
-    display: grid;
-    gap: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
 .modal-step {
     display: none;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
 .modal-step.active {
-    display: block;
+    display: flex;
 }
 
 .quote-form label {
@@ -759,6 +762,12 @@ header.scroll-active {
     margin-bottom: 20px;
     color: rgba(255,255,255,0.9);
     font-weight: 500;
+}
+
+.quote-error {
+    color: #f96;
+    font-size: 0.95rem;
+    min-height: 1.2rem;
 }
 
 .quote-form select,

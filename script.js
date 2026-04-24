@@ -13,8 +13,10 @@
     const prevButtons = document.querySelectorAll('.prev-step');
     const steps = Array.from(document.querySelectorAll('.modal-step'));
     const selectBase = document.getElementById('acabadoSelect');
-    const selectEffect = document.querySelector('[name="acabadoEspecial"]');
+    const selectEffect = document.getElementById('efectoSelect');
     const estimateResult = document.getElementById('estimateResult');
+    const estimateSummary = document.getElementById('estimateSummary');
+    const quoteError = document.getElementById('quoteError');
     const inputLargo = document.querySelector('[name="largo"]');
     const inputAncho = document.querySelector('[name="ancho"]');
     const inputAlto = document.querySelector('[name="alto"]');
@@ -91,7 +93,8 @@
         body.style.overflow = 'hidden';
         setStep(0);
         if (estimateResult) estimateResult.style.display = 'none';
-        if (whatsappButton) whatsappButton.style.display = 'none';
+        if (estimateSummary) estimateSummary.textContent = '';
+        if (quoteError) quoteError.textContent = '';
     };
 
     const closeModal = () => {
@@ -112,9 +115,14 @@
     const getEffectMultiplier = (effect) => {
         const map = {
             'Mate': 1.0,
-            'Hidrocromo': 3.0,
-            'MC00': 2.8,
-            'Tornasol': 2.6,
+            'Satinado': 1.1,
+            'Brillante': 1.2,
+            'Tornasol': 1.4,
+            'MC00': 1.5,
+            'Hidrocromo': 1.6,
+            'Metalizado Oro': 1.7,
+            'Metalizado Plata': 1.6,
+            'Metalizado Bronce': 1.5,
         };
         return map[effect] || 1.0;
     };
@@ -123,7 +131,24 @@
         return value.toLocaleString('es-MX', { style: 'currency', currency: 'MXN', maximumFractionDigits: 0 });
     };
 
-    const updateTotalPrice = () => {
+    const validateStep1 = () => {
+        const tipoBase = selectBase.value;
+        const efecto = selectEffect.value;
+
+        if (!tipoBase || !efecto) {
+            if (quoteError) {
+                quoteError.textContent = 'Debes elegir una base y un efecto antes de continuar.';
+            }
+            return false;
+        }
+
+        if (quoteError) {
+            quoteError.textContent = '';
+        }
+        return true;
+    };
+
+    const calculateEstimate = () => {
         const largo = parseFloat(inputLargo.value) || 0;
         const ancho = parseFloat(inputAncho.value) || 0;
         const alto = parseFloat(inputAlto.value) || 0;
@@ -131,19 +156,43 @@
         const efecto = selectEffect.value;
 
         if (!largo || !ancho || !alto) {
-            estimateResult.innerHTML = '<p>Introduce Largo, Ancho y Alto para ver el precio estimado.</p>';
-            estimateResult.style.display = 'block';
-            return;
+            if (estimateResult) {
+                estimateResult.innerHTML = '<p>Ingresa Largo, Ancho y Alto en mm para calcular el estimado.</p>';
+                estimateResult.style.display = 'block';
+            }
+            return 0;
         }
 
         const volumen = largo * ancho * alto;
-        const baseRate = 4.2;
+        const baseRate = 0.00018;
         const total = volumen * baseRate * getBaseMultiplier(tipoBase) * getEffectMultiplier(efecto);
-        estimateResult.innerHTML = `
-            <p>Precio estimado: <strong>${formatCurrency(total)}</strong></p>
-            <p>Este precio se ajusta según la complejidad del acabado.</p>
-        `;
-        estimateResult.style.display = 'block';
+        const rounded = Math.round(total);
+
+        if (estimateResult) {
+            estimateResult.innerHTML = `
+                <p>Precio Estimado: <strong>${formatCurrency(rounded)}</strong></p>
+                <p class="estimate-note">Basado en volumen y acabado seleccionado.</p>
+            `;
+            estimateResult.style.display = 'block';
+        }
+        return rounded;
+    };
+
+    const buildSummary = (precio) => {
+        const tipoBase = selectBase.value;
+        const efecto = selectEffect.value;
+        const largo = parseFloat(inputLargo.value) || 0;
+        const ancho = parseFloat(inputAncho.value) || 0;
+        const alto = parseFloat(inputAlto.value) || 0;
+
+        if (estimateSummary) {
+            estimateSummary.innerHTML = `
+                <p>Base: <strong>${tipoBase}</strong></p>
+                <p>Efecto: <strong>${efecto}</strong></p>
+                <p>Dimensiones: <strong>${largo} x ${ancho} x ${alto} mm</strong></p>
+                <p><strong>${formatCurrency(precio)}</strong> estimado final</p>
+            `;
+        }
     };
 
     const launchWhatsApp = () => {
@@ -152,14 +201,17 @@
         const alto = parseFloat(inputAlto.value) || 0;
         const tipoBase = selectBase.value;
         const efecto = selectEffect.value;
+        const precio = calculateEstimate();
 
-        if (!largo || !ancho || !alto) {
-            estimateResult.innerHTML = '<p>Completa Largo, Ancho y Alto antes de confirmar.</p>';
-            estimateResult.style.display = 'block';
+        if (!tipoBase || !efecto || !largo || !ancho || !alto) {
+            if (estimateResult) {
+                estimateResult.innerHTML = '<p>Completa todas las etapas antes de confirmar por WhatsApp.</p>';
+                estimateResult.style.display = 'block';
+            }
             return;
         }
 
-        const mensaje = `Hola REX 3D, coticé una pieza con Base: ${tipoBase}, Efecto: ${efecto} y Dimensiones: ${largo}, ${ancho}, ${alto}.`;
+        const mensaje = `Hola REX 3D, me interesa una pieza ${tipoBase} con acabado ${efecto} de ${largo}x${ancho}x${alto} mm. El estimado es ${formatCurrency(precio)}. ¿Podemos agendarlo?`;
         const whatsappUrl = `https://wa.me/tu_numero?text=${encodeURIComponent(mensaje)}`;
         window.open(whatsappUrl, '_blank');
     };
@@ -198,8 +250,14 @@
     nextButtons.forEach((button) => {
         button.addEventListener('click', () => {
             if (currentStep === 0) {
+                if (!validateStep1()) return;
                 setStep(1);
-                updateTotalPrice();
+                calculateEstimate();
+            } else if (currentStep === 1) {
+                const precio = calculateEstimate();
+                if (precio <= 0) return;
+                buildSummary(precio);
+                setStep(2);
             }
         });
     });
@@ -210,13 +268,17 @@
 
     [selectBase, selectEffect, inputLargo, inputAncho, inputAlto].forEach((input) => {
         if (input) {
-            input.addEventListener('input', updateTotalPrice);
+            input.addEventListener('input', () => {
+                if (currentStep === 1) {
+                    calculateEstimate();
+                }
+            });
         }
     });
 
     const quoteActionButton = document.querySelector('.quote-action');
     if (quoteActionButton) {
-        quoteActionButton.textContent = 'Confirmar por WhatsApp';
+        quoteActionButton.textContent = 'Confirmar Cotización por WhatsApp';
         quoteActionButton.addEventListener('click', launchWhatsApp);
     }
 
