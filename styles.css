@@ -436,6 +436,23 @@ header.scrolled {
     flex-wrap: wrap;
 }
 
+.estimate-result {
+    margin-top: 1rem;
+    padding: 1rem 1.1rem;
+    border: 1px solid rgba(0, 212, 255, 0.24);
+    background: rgba(0, 212, 255, 0.04);
+    border-radius: 18px;
+    color: #e6f7ff;
+    line-height: 1.6;
+}
+
+.whatsapp-action {
+    display: inline-flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 1rem;
+}
+
 .quote-form label {
     display: grid;
     gap: 0.55rem;
