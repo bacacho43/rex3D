@@ -8,7 +8,7 @@
     const modalBackdrop = document.querySelector('.quote-modal-backdrop');
     const closeButton = document.querySelector('.modal-close');
     const headerCotizar = document.getElementById('cotizar-btn');
-    const stickyQuoteBtn = document.getElementById('stickyQuoteBtn');
+    const stickyQuoteBtn = document.getElementById('btn-cotizar-flotante');
     const nextButtons = document.querySelectorAll('.next-step');
     const prevButtons = document.querySelectorAll('.prev-step');
     const steps = Array.from(document.querySelectorAll('.modal-step'));
