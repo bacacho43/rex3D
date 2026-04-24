@@ -169,14 +169,13 @@
                 <p>Ingresa datos, obtén un estimado y confirma tu proyecto por WhatsApp.</p>
             </div>
             <form class="quote-form">
-                <div class="modal-step step-1 active">
+                <div id="paso-1">
                     <label>
                         Selección de Base
                         <select id="acabadoSelect" name="tipoBase">
                             <option value="" disabled selected>Selecciona una base</option>
                             <option value="Filamento Directo">Filamento Directo (Económico)</option>
                             <option value="Acabado Plus">Acabado Plus</option>
-                            <option value="Primer Rellenador">Primer Rellenador</option>
                         </select>
                     </label>
                     <label>
@@ -196,35 +195,28 @@
                     </label>
                     <p class="quote-error" id="quoteError"></p>
                     <div class="step-footer">
-                        <button type="button" class="btn-secondary next-step">Siguiente</button>
+                        <button type="button" id="btn-siguiente" class="btn-secondary">Siguiente</button>
                     </div>
                 </div>
-                <div class="modal-step step-2">
+                <div id="paso-2" style="display: none;">
                     <div class="dimension-grid">
                         <label>
                             Largo (mm)
-                            <input type="number" name="largo" min="0" step="1" placeholder="Largo">
+                            <input type="number" id="input-largo" name="largo" min="0" step="1" placeholder="Largo">
                         </label>
                         <label>
                             Ancho (mm)
-                            <input type="number" name="ancho" min="0" step="1" placeholder="Ancho">
+                            <input type="number" id="input-ancho" name="ancho" min="0" step="1" placeholder="Ancho">
                         </label>
                         <label>
                             Alto (mm)
-                            <input type="number" name="alto" min="0" step="1" placeholder="Alto">
+                            <input type="number" id="input-alto" name="alto" min="0" step="1" placeholder="Alto">
                         </label>
                     </div>
                     <div class="estimate-result" id="estimateResult"></div>
                     <div class="step-footer step-controls">
                         <button type="button" class="btn-secondary prev-step">Anterior</button>
-                        <button type="button" class="btn-secondary next-step">Siguiente</button>
-                    </div>
-                </div>
-                <div class="modal-step step-3">
-                    <div class="estimate-summary" id="estimateSummary"></div>
-                    <div class="step-footer step-controls">
-                        <button type="button" class="btn-secondary prev-step">Anterior</button>
-                        <button type="button" class="btn-secondary quote-action">Confirmar Cotización por WhatsApp</button>
+                        <button type="button" id="btn-confirmar" class="btn-secondary">Finalizar y Enviar a WhatsApp</button>
                     </div>
                 </div>
             </form>
