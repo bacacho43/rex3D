@@ -177,7 +177,7 @@ header.scroll-active {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.88) 100%);
+    background: rgba(0, 0, 0, 0.55);
 }
 
 .hero-copy {
@@ -185,7 +185,7 @@ header.scroll-active {
     z-index: 1;
     text-align: center;
     padding: 0 1rem;
-    max-width: 90%;
+    max-width: 95%;
     width: 100%;
     margin: 0 auto;
 }
@@ -200,7 +200,7 @@ header.scroll-active {
 
 .hero-title {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(2.6rem, 5vw, 4.5rem);
+    font-size: clamp(2rem, 8vw, 5rem);
     letter-spacing: 0.18em;
     line-height: 1.02;
     text-transform: uppercase;
