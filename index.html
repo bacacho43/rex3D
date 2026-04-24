@@ -23,6 +23,7 @@
                 <a href="#acabados">Acabados</a>
                 <a href="#contacto">Contacto</a>
             </nav>
+            <button id="cotizar-btn" class="btn-header">Cotizar</button>
         </div>
     </header>
 
@@ -35,26 +36,29 @@
             <div class="hero-copy">
                 <p class="eyebrow">Ingeniería + Arte</p>
                 <h1 class="hero-title">REX 3D STUDIO</h1>
-                <p class="hero-subtitle">INGENIERÍA Y ARTE EN CADA CAPA</p>
+                <p class="hero-subtitle">INGENIERÍA + ARTE</p>
             </div>
         </section>
 
         <section class="section projects" id="proyectos">
             <div class="section-content">
                 <p class="section-eyebrow">Proyectos</p>
-                <h2>Diseño escultórico con precisión técnica.</h2>
+                <h2>Proyectos con precisión escultórica y valor técnico.</h2>
                 <div class="cards-grid">
                     <article class="project-card reveal">
+                        <div class="project-image" style="background-image: url('new dino.jpeg');"></div>
                         <h3>Figura de colección</h3>
                         <p>Escultura premium con acabados de alta fidelidad para clientes exigentes.</p>
                     </article>
                     <article class="project-card reveal">
+                        <div class="project-image" style="background-image: url('t rex.jpg');"></div>
                         <h3>Prototipo funcional</h3>
                         <p>Modelos técnicos listos para prueba de forma, ensamble y uso real.</p>
                     </article>
                     <article class="project-card reveal">
+                        <div class="project-image" style="background-image: url('dino-scroll.png.jpeg');"></div>
                         <h3>Escultura de exhibición</h3>
-                        <p>Obras de impacto visual pensadas para espacios selectos y galerías.</p>
+                        <p>Obras de alto impacto visual para espacios exclusivos y galerías.</p>
                     </article>
                 </div>
             </div>
@@ -62,18 +66,15 @@
 
         <section class="section finishes" id="acabados">
             <div class="section-content">
-                <p class="section-eyebrow">Galería de Acabados</p>
-                <h2>Acabados que elevan cada pieza.</h2>
+                <p class="section-eyebrow">Acabados</p>
+                <h2>Acabados que transforman cada pieza.</h2>
                 <div class="finishes-grid">
                     <div class="finish-card reveal">Mate</div>
-                    <div class="finish-card reveal">Satinado</div>
-                    <div class="finish-card reveal">Brillante</div>
-                    <div class="finish-card reveal">Tornasol</div>
-                    <div class="finish-card reveal">MC00</div>
                     <div class="finish-card reveal">Hidrocromo</div>
+                    <div class="finish-card reveal">MC00</div>
+                    <div class="finish-card reveal">Tornasol</div>
                     <div class="finish-card reveal">Metalizado Oro</div>
                     <div class="finish-card reveal">Metalizado Plata</div>
-                    <div class="finish-card reveal">Metalizado Bronce</div>
                 </div>
             </div>
         </section>
@@ -83,6 +84,7 @@
                 <div>
                     <p class="section-eyebrow">Contacto</p>
                     <h2>Hablemos de tu próximo proyecto.</h2>
+                    <p>Disponible para cotizaciones rápidas con acabados exclusivos y diseño a medida.</p>
                 </div>
                 <a class="contact-link" href="https://wa.me/" target="_blank" rel="noreferrer">WhatsApp</a>
             </div>
@@ -97,42 +99,26 @@
             <button type="button" class="modal-close" aria-label="Cerrar cotización">×</button>
             <div class="modal-heading">
                 <p class="modal-eyebrow">Solicitud de Cotización</p>
-                <h2>Calcula tu proyecto 3D</h2>
-                <p>Recibe un estimado en segundos y confirma tu presupuesto vía WhatsApp.</p>
+                <h2>Calcula tu presupuesto</h2>
+                <p>Ingresa datos, obtén un estimado y confirma tu proyecto por WhatsApp.</p>
             </div>
             <form class="quote-form">
                 <div class="modal-step step-1 active">
                     <label>
-                        Tipo de Base
+                        Selección de Base
                         <select id="acabadoSelect" name="tipoBase">
                             <option value="Filamento Directo">Filamento Directo (Económico)</option>
-                            <option value="Primer Universal">Primer Universal</option>
+                            <option value="Acabado Plus">Acabado Plus</option>
                             <option value="Primer Rellenador">Primer Rellenador</option>
-                            <option value="Acabado Plus">Acabado Plus (Lijado)</option>
                         </select>
                     </label>
-                    <div class="conditional-group" id="primerColors">
-                        <label>
-                            Color de Primer
-                            <select id="colorPrimer" name="colorPrimer">
-                                <option value="Blanco">Blanco</option>
-                                <option value="Gris">Gris</option>
-                                <option value="Negro">Negro</option>
-                            </select>
-                        </label>
-                    </div>
                     <label>
                         Efecto Especial
                         <select name="acabadoEspecial">
                             <option value="Mate">Mate</option>
-                            <option value="Satinado">Satinado</option>
-                            <option value="Brillante">Brillante / Alto Brillo</option>
-                            <option value="Tornasol">Tornasol</option>
-                            <option value="MC00">MC00</option>
                             <option value="Hidrocromo">Hidrocromo</option>
-                            <option value="Metalizado Oro">Metalizado Oro</option>
-                            <option value="Metalizado Plata">Metalizado Plata</option>
-                            <option value="Metalizado Bronce">Metalizado Bronce</option>
+                            <option value="MC00">MC00</option>
+                            <option value="Tornasol">Tornasol</option>
                         </select>
                     </label>
                     <div class="step-footer">
@@ -142,8 +128,8 @@
                 <div class="modal-step step-2">
                     <div class="dimension-grid">
                         <label>
-                            Altura (cm)
-                            <input type="number" name="alto" min="0" step="0.1" placeholder="Altura">
+                            Alto (cm)
+                            <input type="number" name="alto" min="0" step="0.1" placeholder="Alto">
                         </label>
                         <label>
                             Ancho (cm)
@@ -154,6 +140,10 @@
                             <input type="number" name="profundidad" min="0" step="0.1" placeholder="Profundidad">
                         </label>
                     </div>
+                    <label>
+                        Especificaciones opcionales
+                        <textarea name="especificaciones" rows="4" placeholder="Material, diálogo de acabado, referencias..."></textarea>
+                    </label>
                     <div class="step-footer step-controls">
                         <button type="button" class="btn-secondary prev-step">Anterior</button>
                         <button type="button" class="btn-secondary next-step">Siguiente</button>
@@ -163,10 +153,6 @@
                     <label class="file-upload">
                         <span>Foto de Referencia (Opcional)</span>
                         <input type="file" name="referencia" accept="image/*">
-                    </label>
-                    <label>
-                        Especificaciones adicionales
-                        <textarea name="especificaciones" rows="4" placeholder="Notas opcionales: materiales, función, referencia visual..."></textarea>
                     </label>
                     <div class="estimate-result" id="estimateResult"></div>
                     <div class="step-footer step-controls">
