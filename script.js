@@ -103,41 +103,25 @@
         body.style.overflow = 'auto';
     };
 
-    const getBaseMultiplier = (base) => {
+    const getMaterialFactor = (material) => {
         const map = {
-            'Filamento Directo': 1.0,
-            'Acabado Plus': 1.3,
-            'Primer Rellenador': 1.2,
+            'Filamento Directo': 0.005,
+            'Acabado Plus': 0.012,
         };
-        return map[base] || 1.0;
-    };
-
-    const getEffectMultiplier = (effect) => {
-        const map = {
-            'Mate': 1.0,
-            'Satinado': 1.1,
-            'Brillante': 1.2,
-            'Tornasol': 1.4,
-            'MC00': 1.5,
-            'Hidrocromo': 1.6,
-            'Metalizado Oro': 1.7,
-            'Metalizado Plata': 1.6,
-            'Metalizado Bronce': 1.5,
-        };
-        return map[effect] || 1.0;
+        return map[material] || 0.005;
     };
 
     const formatCurrency = (value) => {
         return value.toLocaleString('es-MX', { style: 'currency', currency: 'MXN', maximumFractionDigits: 0 });
     };
 
-    const validateStep1 = () => {
+    const validarPaso1 = () => {
         const tipoBase = selectBase.value;
         const efecto = selectEffect.value;
 
         if (!tipoBase || !efecto) {
             if (quoteError) {
-                quoteError.textContent = 'Debes elegir una base y un efecto antes de continuar.';
+                quoteError.textContent = 'Selecciona una Base y un Efecto antes de continuar.';
             }
             return false;
         }
@@ -148,72 +132,84 @@
         return true;
     };
 
-    const calculateEstimate = () => {
+    const calcularPrecio = () => {
         const largo = parseFloat(inputLargo.value) || 0;
         const ancho = parseFloat(inputAncho.value) || 0;
         const alto = parseFloat(inputAlto.value) || 0;
-        const tipoBase = selectBase.value;
+        const material = selectBase.value;
         const efecto = selectEffect.value;
 
         if (!largo || !ancho || !alto) {
             if (estimateResult) {
-                estimateResult.innerHTML = '<p>Ingresa Largo, Ancho y Alto en mm para calcular el estimado.</p>';
+                estimateResult.innerHTML = '<p>Ingresa Largo, Ancho y Alto en mm para calcular el costo de producción.</p>';
                 estimateResult.style.display = 'block';
             }
             return 0;
         }
 
         const volumen = largo * ancho * alto;
-        const baseRate = 0.00018;
-        const total = volumen * baseRate * getBaseMultiplier(tipoBase) * getEffectMultiplier(efecto);
+        const factor = getMaterialFactor(material);
+        const total = volumen * factor;
         const rounded = Math.round(total);
 
         if (estimateResult) {
-            estimateResult.innerHTML = `
-                <p>Precio Estimado: <strong>${formatCurrency(rounded)}</strong></p>
-                <p class="estimate-note">Basado en volumen y acabado seleccionado.</p>
-            `;
+            estimateResult.innerHTML = `<p>Costo estimado de producción: <strong>${formatCurrency(rounded)}</strong> MXN</p>`;
             estimateResult.style.display = 'block';
         }
+
+        if (estimateSummary) {
+            estimateSummary.textContent = '';
+        }
+
         return rounded;
     };
 
-    const buildSummary = (precio) => {
-        const tipoBase = selectBase.value;
-        const efecto = selectEffect.value;
-        const largo = parseFloat(inputLargo.value) || 0;
-        const ancho = parseFloat(inputAncho.value) || 0;
-        const alto = parseFloat(inputAlto.value) || 0;
+    const siguientePaso = () => {
+        if (currentStep === 0) {
+            if (!validarPaso1()) return;
+            setStep(1);
+            calcularPrecio();
+            return;
+        }
 
-        if (estimateSummary) {
-            estimateSummary.innerHTML = `
-                <p>Base: <strong>${tipoBase}</strong></p>
-                <p>Efecto: <strong>${efecto}</strong></p>
-                <p>Dimensiones: <strong>${largo} x ${ancho} x ${alto} mm</strong></p>
-                <p><strong>${formatCurrency(precio)}</strong> estimado final</p>
-            `;
+        if (currentStep === 1) {
+            const precio = calcularPrecio();
+            if (precio <= 0) return;
+            if (estimateSummary) {
+                const tipoBase = selectBase.value;
+                const efecto = selectEffect.value;
+                const largo = parseFloat(inputLargo.value) || 0;
+                const ancho = parseFloat(inputAncho.value) || 0;
+                const alto = parseFloat(inputAlto.value) || 0;
+                estimateSummary.innerHTML = `
+                    <p>Base: <strong>${tipoBase}</strong></p>
+                    <p>Efecto: <strong>${efecto}</strong></p>
+                    <p>Dimensiones: <strong>${largo} x ${ancho} x ${alto} mm</strong></p>
+                    <p>Costo estimado de producción: <strong>${formatCurrency(precio)}</strong> MXN</p>
+                `;
+            }
+            setStep(2);
         }
     };
 
-    const launchWhatsApp = () => {
+    const finalizarWhatsApp = () => {
+        const tipoBase = selectBase.value;
+        const efecto = selectEffect.value;
         const largo = parseFloat(inputLargo.value) || 0;
         const ancho = parseFloat(inputAncho.value) || 0;
         const alto = parseFloat(inputAlto.value) || 0;
-        const tipoBase = selectBase.value;
-        const efecto = selectEffect.value;
-        const precio = calculateEstimate();
+        const precio = calcularPrecio();
 
-        if (!tipoBase || !efecto || !largo || !ancho || !alto) {
+        if (!tipoBase || !efecto || !largo || !ancho || !alto || precio <= 0) {
             if (estimateResult) {
-                estimateResult.innerHTML = '<p>Completa todas las etapas antes de confirmar por WhatsApp.</p>';
+                estimateResult.innerHTML = '<p>Completa todos los datos antes de enviar a WhatsApp.</p>';
                 estimateResult.style.display = 'block';
             }
             return;
         }
 
         const mensaje = `Hola REX 3D, me interesa una pieza ${tipoBase} con acabado ${efecto} de ${largo}x${ancho}x${alto} mm. El estimado es ${formatCurrency(precio)}. ¿Podemos agendarlo?`;
-        const whatsappUrl = `https://wa.me/tu_numero?text=${encodeURIComponent(mensaje)}`;
-        window.open(whatsappUrl, '_blank');
+        window.open(`https://wa.me/tu_numero?text=${encodeURIComponent(mensaje)}`, '_blank');
     };
 
     if (headerCotizar) {
@@ -248,18 +244,7 @@
     });
 
     nextButtons.forEach((button) => {
-        button.addEventListener('click', () => {
-            if (currentStep === 0) {
-                if (!validateStep1()) return;
-                setStep(1);
-                calculateEstimate();
-            } else if (currentStep === 1) {
-                const precio = calculateEstimate();
-                if (precio <= 0) return;
-                buildSummary(precio);
-                setStep(2);
-            }
-        });
+        button.addEventListener('click', siguientePaso);
     });
 
     prevButtons.forEach((button) => {
@@ -270,7 +255,7 @@
         if (input) {
             input.addEventListener('input', () => {
                 if (currentStep === 1) {
-                    calculateEstimate();
+                    calcularPrecio();
                 }
             });
         }
@@ -278,8 +263,8 @@
 
     const quoteActionButton = document.querySelector('.quote-action');
     if (quoteActionButton) {
-        quoteActionButton.textContent = 'Confirmar Cotización por WhatsApp';
-        quoteActionButton.addEventListener('click', launchWhatsApp);
+        quoteActionButton.textContent = 'Finalizar y Enviar a WhatsApp';
+        quoteActionButton.addEventListener('click', finalizarWhatsApp);
     }
 
     const openDetailPanel = (panelName) => {

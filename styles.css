@@ -748,12 +748,11 @@ header.scroll-active {
 
 .modal-step {
     display: none;
-    flex-direction: column;
     gap: 1.5rem;
 }
 
 .modal-step.active {
-    display: flex;
+    display: block;
 }
 
 .quote-form label {
