@@ -331,11 +331,20 @@ header.scrolled {
     display: none;
     align-items: center;
     justify-content: center;
-    z-index: 99999;
+    z-index: 100000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
 }
 
 .quote-modal.active {
     display: flex;
+    opacity: 1;
+    visibility: visible;
+}
+
+.quote-modal.active .quote-modal-card {
+    animation: fadeInUp 0.24s ease both;
 }
 
 .quote-modal-backdrop {

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REX 3D STUDIO | Esculturas Premium en ImpresiÃ³n 3D</title>
+    <title>REX 3D STUDIO | Esculturas Premium en Impresión 3D</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -51,21 +51,131 @@
         <div class="hero-content">
             <h3>ESCULTURAS PREMIUM</h3>
             <h1>Arte Impreso en 3D</h1>
-            <p>Transforma tu idea en una pieza tangible con precisiÃ³n artÃ­stica. EnvÃ­anos tu proyecto y recibe un diseÃ±o exclusivo hecho a medida.</p>
+            <p>Transforma tu idea en una pieza tangible con precisión artística. Envíanos tu proyecto y recibe un diseño exclusivo hecho a medida.</p>
             <button id="cotizar-btn" class="btn-main open-quote">Cotizar mi Proyecto</button>
         </div>
     </section>
 
-    <div class="quote-modal" id="quoteModal" aria-hidden="true">
+    <section class="intro" id="servicios">
+        <div class="intro-content">
+            <p>En REX 3D fusionamos tecnología de vanguardia con visión artística. Nos especializamos en la creación de piezas únicas, figuras coleccionables y prototipos de alta fidelidad.</p>
+        </div>
+    </section>
+
+    <section class="parallax-bg">
+        <div class="parallax-content">
+            <h2>Innovación en cada capa</h2>
+        </div>
+    </section>
+
+    <section class="creative-process">
+        <div class="process-header">
+            <p class="section-subtitle">Proceso Creativo</p>
+            <h2>Cómo llevamos tu idea a la realidad</h2>
+            <p>Descubre el flujo de trabajo detrás de cada pieza: desde el boceto digital hasta la impresión 3D y el acabado final.</p>
+        </div>
+        <div class="videos-swiper">
+            <div class="video-overlay">
+                <div class="overlay-text">Arte impreso en 3D</div>
+            </div>
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <video class="process-video" src="./estdio.mp4" autoplay muted loop playsinline preload="auto"></video>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <video class="process-video" src="./timlaps.mp4" autoplay muted loop playsinline preload="auto"></video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </section>
+
+    <section class="projects" id="proyectos">
+        <div class="section-header">
+            <p class="section-subtitle">Galería de Trabajos</p>
+            <h2>Proyectos Realizados</h2>
+            <p>Una selección de trabajos que conectan diseño, detalle y precisión técnica en cada pieza impresa en 3D.</p>
+        </div>
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <article class="project-card">
+                        <h3>Figura coleccionable</h3>
+                        <p>Escultura detallada para exposiciones y coleccionistas, con acabados premium y geometría compleja.</p>
+                    </article>
+                </div>
+                <div class="swiper-slide">
+                    <article class="project-card">
+                        <h3>Prototipo funcional</h3>
+                        <p>Desarrollo de piezas de alta fidelidad para prueba de forma, función y ensamblaje rápido.</p>
+                    </article>
+                </div>
+                <div class="swiper-slide">
+                    <article class="project-card">
+                        <h3>Escultura de exhibición</h3>
+                        <p>Composiciones artísticas para interiores, con texturas finas y presencia visual de alto impacto.</p>
+                    </article>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contacto">
+        <div class="contact-grid">
+            <a href="https://wa.me/" target="_blank" rel="noreferrer" class="contact-card contact-whatsapp">
+                <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+                <div>
+                    <h3>WhatsApp</h3>
+                    <p>Mensaje rápido</p>
+                </div>
+            </a>
+            <a href="https://www.instagram.com/rex3d.studio/" target="_blank" rel="noreferrer" class="contact-card contact-instagram">
+                <div class="contact-icon"><i class="fab fa-instagram"></i></div>
+                <div>
+                    <h3>Instagram</h3>
+                    <p>Ver nuestros reels</p>
+                </div>
+            </a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" class="contact-card contact-facebook">
+                <div class="contact-icon"><i class="fab fa-facebook-f"></i></div>
+                <div>
+                    <h3>Facebook</h3>
+                    <p>Conecta con nosotros</p>
+                </div>
+            </a>
+            <a href="mailto:contacto@rex3dstudio.com" target="_blank" rel="noreferrer" class="contact-card contact-email">
+                <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                <div>
+                    <h3>Correo</h3>
+                    <p>Escríbenos</p>
+                </div>
+            </a>
+        </div>
+    </section>
+    </main>
+
+    <div id="modal-cotizacion" class="quote-modal" aria-hidden="true">
         <div class="quote-modal-backdrop"></div>
         <div class="quote-modal-card">
-            <button type="button" class="modal-close" aria-label="Cerrar cotizaciÃ³n">Ã—</button>
+            <button type="button" class="modal-close" aria-label="Cerrar cotización">×</button>
             <div class="modal-heading">
-                <p class="modal-eyebrow">Solicitud de CotizaciÃ³n</p>
+                <p class="modal-eyebrow">Solicitud de Cotización</p>
                 <h2>Calcula tu proyecto 3D</h2>
                 <p>Completa los datos esenciales y recibe una propuesta en estilo futurista.</p>
             </div>
-                        <form class="quote-form">
+            <form class="quote-form">
                 <div class="modal-step step-1 active">
                     <label>
                         Acabado
@@ -137,119 +247,9 @@
         </div>
     </div>
 
-    <section class="intro" id="servicios">
-        <div class="intro-content">
-            <p>En REX 3D fusionamos tecnologÃ­a de vanguardia con visiÃ³n artÃ­stica. Nos especializamos en la creaciÃ³n de piezas Ãºnicas, figuras coleccionables y prototipos de alta fidelidad.</p>
-        </div>
-    </section>
-
-    <section class="parallax-bg">
-        <div class="parallax-content">
-            <h2>InnovaciÃ³n en cada capa</h2>
-        </div>
-    </section>
-
-    <section class="creative-process">
-        <div class="process-header">
-            <p class="section-subtitle">Proceso Creativo</p>
-            <h2>CÃ³mo llevamos tu idea a la realidad</h2>
-            <p>Descubre el flujo de trabajo detrÃ¡s de cada pieza: desde el boceto digital hasta la impresiÃ³n 3D y el acabado final.</p>
-        </div>
-        <div class="videos-swiper">
-            <div class="video-overlay">
-                <div class="overlay-text">Arte impreso en 3D</div>
-            </div>
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <video class="process-video" src="./estdio.mp4" autoplay muted loop playsinline preload="auto"></video>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <video class="process-video" src="./timlaps.mp4" autoplay muted loop playsinline preload="auto"></video>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-        </div>
-    </section>
-
-    <section class="projects" id="proyectos">
-        <div class="section-header">
-            <p class="section-subtitle">GalerÃ­a de Trabajos</p>
-            <h2>Proyectos Realizados</h2>
-            <p>Una selecciÃ³n de trabajos que conectan diseÃ±o, detalle y precisiÃ³n tÃ©cnica en cada pieza impresa en 3D.</p>
-        </div>
-        <div class="swiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <article class="project-card">
-                        <h3>Figura coleccionable</h3>
-                        <p>Escultura detallada para exposiciones y coleccionistas, con acabados premium y geometrÃ­a compleja.</p>
-                    </article>
-                </div>
-                <div class="swiper-slide">
-                    <article class="project-card">
-                        <h3>Prototipo funcional</h3>
-                        <p>Desarrollo de piezas de alta fidelidad para prueba de forma, funciÃ³n y ensamblaje rÃ¡pido.</p>
-                    </article>
-                </div>
-                <div class="swiper-slide">
-                    <article class="project-card">
-                        <h3>Escultura de exhibiciÃ³n</h3>
-                        <p>Composiciones artÃ­sticas para interiores, con texturas finas y presencia visual de alto impacto.</p>
-                    </article>
-                </div>
-            </div>
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-        </div>
-    </section>
-
-    <section class="contact-section" id="contacto">
-        <div class="contact-grid">
-            <a href="https://wa.me/" target="_blank" rel="noreferrer" class="contact-card contact-whatsapp">
-                <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
-                <div>
-                    <h3>WhatsApp</h3>
-                    <p>Mensaje rÃ¡pido</p>
-                </div>
-            </a>
-            <a href="https://www.instagram.com/rex3d.studio/" target="_blank" rel="noreferrer" class="contact-card contact-instagram">
-                <div class="contact-icon"><i class="fab fa-instagram"></i></div>
-                <div>
-                    <h3>Instagram</h3>
-                    <p>Ver nuestros reels</p>
-                </div>
-            </a>
-            <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" class="contact-card contact-facebook">
-                <div class="contact-icon"><i class="fab fa-facebook-f"></i></div>
-                <div>
-                    <h3>Facebook</h3>
-                    <p>Conecta con nosotros</p>
-                </div>
-            </a>
-            <a href="mailto:contacto@rex3dstudio.com" target="_blank" rel="noreferrer" class="contact-card contact-email">
-                <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                <div>
-                    <h3>Correo</h3>
-                    <p>EscrÃ­benos</p>
-                </div>
-            </a>
-        </div>
-    </section>
-    </main>
-
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        // Preloader - Ocultar despuÃ©s de 2 segundos
+        // Preloader - Ocultar después de 2 segundos
         window.addEventListener('load', () => {
             setTimeout(() => {
                 const preloader = document.getElementById('preloader');
@@ -345,7 +345,7 @@
                 text.style.opacity = Math.max(0, 1 - (scrollValue / 500));
             }
         });
-            const quoteModal = document.getElementById('quoteModal');
+            const quoteModal = document.getElementById('modal-cotizacion');
         const cotizarBtn = document.getElementById('cotizar-btn');
         const openQuoteButtons = document.querySelectorAll('.open-quote');
         const closeQuoteButton = document.querySelector('.modal-close');
@@ -360,7 +360,7 @@
         function toggleQuoteModal(open) {
             quoteModal.classList.toggle('active', open);
             quoteModal.setAttribute('aria-hidden', open ? 'false' : 'true');
-            document.body.style.overflow = open ? 'hidden' : '';
+            document.body.style.overflow = open ? 'hidden' : 'auto';
             if (open) {
                 showModalStep(0);
             }
