@@ -160,11 +160,21 @@
     };
 
     [headerCotizar, stickyQuoteBtn].forEach((button) => {
-        button.addEventListener('click', openModal);
+        if (!button) return;
+        button.addEventListener('click', (event) => {
+            if (event && typeof event.preventDefault === 'function') {
+                event.preventDefault();
+            }
+            openModal();
+        });
     });
 
-    modalBackdrop.addEventListener('click', closeModal);
-    closeButton.addEventListener('click', closeModal);
+    if (modalBackdrop) {
+        modalBackdrop.addEventListener('click', closeModal);
+    }
+    if (closeButton) {
+        closeButton.addEventListener('click', closeModal);
+    }
 
     detailButtons.forEach((button) => {
         button.addEventListener('click', () => openDetailPanel(button.dataset.panel));
@@ -185,7 +195,10 @@
         button.addEventListener('click', () => setStep(currentStep - 1));
     });
 
-    document.querySelector('.quote-action').addEventListener('click', calculateQuote);
+    const quoteActionButton = document.querySelector('.quote-action');
+    if (quoteActionButton) {
+        quoteActionButton.addEventListener('click', calculateQuote);
+    }
 
     const openDetailPanel = (panelName) => {
         detailOverlay.classList.add('active');
