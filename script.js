@@ -87,13 +87,13 @@
         });
     };
 
-    const openModal = () => {
+    const abrirCotizador = () => {
         modal.classList.add('active');
         modal.setAttribute('aria-hidden', 'false');
         body.style.overflow = 'hidden';
         setStep(0);
-        estimateResult.style.display = 'none';
-        whatsappButton.style.display = 'none';
+        if (estimateResult) estimateResult.style.display = 'none';
+        if (whatsappButton) whatsappButton.style.display = 'none';
     };
 
     const closeModal = () => {
@@ -159,15 +159,18 @@
         whatsappButton.href = `https://wa.me/?text=${encodeURIComponent(mensaje)}`;
     };
 
-    [headerCotizar, stickyQuoteBtn].forEach((button) => {
-        if (!button) return;
-        button.addEventListener('click', (event) => {
+    if (headerCotizar) {
+        headerCotizar.addEventListener('click', (event) => {
             if (event && typeof event.preventDefault === 'function') {
                 event.preventDefault();
             }
-            openModal();
+            abrirCotizador();
         });
-    });
+    }
+
+    if (stickyQuoteBtn) {
+        stickyQuoteBtn.addEventListener('click', abrirCotizador);
+    }
 
     if (modalBackdrop) {
         modalBackdrop.addEventListener('click', closeModal);
