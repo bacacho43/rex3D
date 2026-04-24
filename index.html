@@ -173,20 +173,20 @@
             <div class="modal-heading">
                 <p class="modal-eyebrow">Solicitud de Cotización</p>
                 <h2>Calcula tu proyecto 3D</h2>
-                <p>Completa los datos esenciales y recibe una propuesta en estilo futurista.</p>
+                <p>Completa los datos esenciales y recibe una propuesta profesional al instante.</p>
             </div>
             <form class="quote-form">
                 <div class="modal-step step-1 active">
                     <label>
-                        Tipo de Base (Acabado)
-                        <select id="acabadoSelect" name="acabado">
+                        Tipo de Base
+                        <select id="acabadoSelect" name="tipoBase">
                             <option value="Filamento Directo">Filamento Directo (Económico)</option>
                             <option value="Primer Universal">Primer Universal</option>
                             <option value="Primer Rellenador">Primer Rellenador</option>
-                            <option value="Acabado Plus">Acabado Plus (Lijado profundo + Base)</option>
+                            <option value="Acabado Plus">Acabado Plus (Lijado)</option>
                         </select>
                     </label>
-                    <div class="conditional-group" id="primerColors" style="display: none;">
+                    <div class="conditional-group" id="primerColors">
                         <label>
                             Color de Primer
                             <select id="colorPrimer" name="colorPrimer">
@@ -197,17 +197,17 @@
                         </label>
                     </div>
                     <label>
-                        Acabado Especial (Efectos y Brillo)
+                        Efecto Especial
                         <select name="acabadoEspecial">
-                            <option value="Mate">Mate (Sin brillo)</option>
-                            <option value="Satinado">Satinado (Brillo suave)</option>
+                            <option value="Mate">Mate</option>
+                            <option value="Satinado">Satinado</option>
                             <option value="Brillante">Brillante / Alto Brillo</option>
-                            <option value="Tornasol">Tornasol (Cambio de color según la luz)</option>
+                            <option value="Tornasol">Tornasol</option>
                             <option value="MC00">MC00</option>
                             <option value="Hidrocromo">Hidrocromo</option>
-                            <option value="Metalizado Oro">Metalizado - Oro</option>
-                            <option value="Metalizado Plata">Metalizado - Plata</option>
-                            <option value="Metalizado Bronce">Metalizado - Bronce</option>
+                            <option value="Metalizado Oro">Metalizado Oro</option>
+                            <option value="Metalizado Plata">Metalizado Plata</option>
+                            <option value="Metalizado Bronce">Metalizado Bronce</option>
                         </select>
                     </label>
                     <div class="step-footer">
@@ -218,7 +218,7 @@
                     <div class="dimension-grid">
                         <label>
                             Altura (cm)
-                            <input type="number" name="altura" min="0" step="0.1" placeholder="Altura">
+                            <input type="number" name="alto" min="0" step="0.1" placeholder="Altura">
                         </label>
                         <label>
                             Ancho (cm)
@@ -236,19 +236,19 @@
                 </div>
                 <div class="modal-step step-3">
                     <label class="file-upload">
-                        Foto de Referencia (Opcional)
+                        <span>Foto de Referencia (Opcional)</span>
                         <input type="file" name="referencia" accept="image/*">
                     </label>
                     <label>
                         Especificaciones adicionales
-                        <textarea name="especificaciones" rows="4" placeholder="Detalles del proyecto, materiales, uso final..."></textarea>
+                        <textarea name="especificaciones" rows="4" placeholder="Notas opcionales: materiales, función, referencia visual..."></textarea>
                     </label>
-                    <div class="estimate-result" id="estimateResult" style="display: none;"></div>
+                    <div class="estimate-result" id="estimateResult"></div>
                     <div class="step-footer step-controls">
                         <button type="button" class="btn-secondary prev-step">Anterior</button>
-                        <button type="button" class="btn-secondary quote-action">Calcular Cotización (Próximamente con IA)</button>
+                        <button type="button" class="btn-secondary quote-action">Calcular Cotización</button>
                     </div>
-                    <a href="#" class="btn-secondary whatsapp-action" id="whatsappContactBtn" style="display: none; justify-content: center;" target="_blank" rel="noreferrer">Aceptar presupuesto y contactar por WhatsApp</a>
+                    <a href="#" class="btn-secondary whatsapp-action" id="whatsappContactBtn" target="_blank" rel="noreferrer">Confirmar presupuesto vía WhatsApp</a>
                 </div>
             </form>
         </div>
@@ -352,145 +352,8 @@
                 text.style.opacity = Math.max(0, 1 - (scrollValue / 500));
             }
         });
-            const quoteModal = document.getElementById('modal-cotizacion');
-        const cotizarBtn = document.getElementById('cotizar-btn');
-        const openQuoteButtons = document.querySelectorAll('.open-quote');
-        const closeQuoteButton = document.querySelector('.modal-close');
-        const quoteBackdrop = document.querySelector('.quote-modal-backdrop');
-        const acabadoSelect = document.getElementById('acabadoSelect');
-        const primerColors = document.getElementById('primerColors');
-        const quoteActionBtn = document.querySelector('.quote-action');
-        const estimateResult = document.getElementById('estimateResult');
-        const whatsappContactBtn = document.getElementById('whatsappContactBtn');
-        const nextStepButtons = document.querySelectorAll('.next-step');
-        const prevStepButtons = document.querySelectorAll('.prev-step');
-        const modalSteps = document.querySelectorAll('.modal-step');
-        let currentStep = 0;
-
-        function toggleQuoteModal(open) {
-            quoteModal.classList.toggle('active', open);
-            quoteModal.setAttribute('aria-hidden', open ? 'false' : 'true');
-            document.body.style.overflow = open ? 'hidden' : 'auto';
-            if (open) {
-                showModalStep(0);
-                estimateResult.style.display = 'none';
-                whatsappContactBtn.style.display = 'none';
-            }
-        }
-
-        function showModalStep(index) {
-            currentStep = Math.max(0, Math.min(index, modalSteps.length - 1));
-            modalSteps.forEach((step, idx) => {
-                step.classList.toggle('active', idx === currentStep);
-            });
-        }
-
-        if (cotizarBtn) {
-            cotizarBtn.addEventListener('click', function (event) {
-                event.preventDefault();
-                toggleQuoteModal(true);
-            });
-        }
-
-        openQuoteButtons.forEach((button) => {
-            button.addEventListener('click', function (event) {
-                event.preventDefault();
-                toggleQuoteModal(true);
-            });
-        });
-
-        closeQuoteButton.addEventListener('click', function () {
-            toggleQuoteModal(false);
-        });
-
-        quoteBackdrop.addEventListener('click', function () {
-            toggleQuoteModal(false);
-        });
-
-        nextStepButtons.forEach((button) => {
-            button.addEventListener('click', function () {
-                showModalStep(currentStep + 1);
-            });
-        });
-
-        prevStepButtons.forEach((button) => {
-            button.addEventListener('click', function () {
-                showModalStep(currentStep - 1);
-            });
-        });
-
-        function getFinishMultiplier(acabadoEspecial) {
-            const multipliers = {
-                'Mate': 1.0,
-                'Satinado': 1.15,
-                'Brillante': 1.3,
-                'Tornasol': 1.8,
-                'MC00': 2.0,
-                'Hidrocromo': 2.5,
-                'Metalizado Oro': 2.4,
-                'Metalizado Plata': 2.3,
-                'Metalizado Bronce': 2.3,
-            };
-            return multipliers[acabadoEspecial] || 1.0;
-        }
-
-        function getBaseTypeMultiplier(tipoBase) {
-            const multipliers = {
-                'Filamento Directo': 1.0,
-                'Primer Universal': 1.15,
-                'Primer Rellenador': 1.25,
-                'Acabado Plus': 1.4,
-            };
-            return multipliers[tipoBase] || 1.0;
-        }
-
-        function calculateQuote() {
-            const altura = parseFloat(document.querySelector('[name="alto"]').value) || 0;
-            const ancho = parseFloat(document.querySelector('[name="ancho"]').value) || 0;
-            const profundidad = parseFloat(document.querySelector('[name="profundidad"]').value) || 0;
-            const tipoBase = document.querySelector('[name="tipoBase"]')?.value || 'Filamento Directo';
-            const acabadoEspecial = document.querySelector('[name="acabadoEspecial"]')?.value || 'Mate';
-            const especificaciones = document.querySelector('[name="especificaciones"]').value || '';
-
-            if (!altura || !ancho || !profundidad) {
-                estimateResult.innerHTML = '<p style="color: #ffb86c;">Por favor ingresa Alto, Ancho y Profundidad para obtener tu estimado.</p>';
-                estimateResult.style.display = 'block';
-                whatsappContactBtn.style.display = 'none';
-                return;
-            }
-
-            const volumen = altura * ancho * profundidad;
-            const baseMultiplier = getBaseTypeMultiplier(tipoBase);
-            const finishMultiplier = getFinishMultiplier(acabadoEspecial);
-            const baseRate = 4.2;
-            const precioEstimado = volumen * baseRate * baseMultiplier * finishMultiplier;
-            const minimo = Math.round(precioEstimado * 0.95);
-            const maximo = Math.round(precioEstimado * 1.15);
-
-            estimateResult.innerHTML = `
-                <p>Tu estimado es entre <strong>$${minimo.toLocaleString()}</strong> y <strong>$${maximo.toLocaleString()}</strong> MXN.</p>
-                <p>El precio final depende de la complejidad del modelo 3D, el tipo de material y el acabado final.</p>
-            `;
-            estimateResult.style.display = 'block';
-
-            const whatsappText = `Hola, quiero cotizar mi proyecto.\n\nTipo de Base: ${tipoBase}\nAcabado Especial: ${acabadoEspecial}\nAlto: ${altura} cm\nAncho: ${ancho} cm\nProfundidad: ${profundidad} cm\nEstimado: entre $${minimo} y $${maximo} MXN\n\nEspecificaciones: ${especificaciones}`;
-
-            whatsappContactBtn.href = `https://wa.me/?text=${encodeURIComponent(whatsappText)}`;
-            whatsappContactBtn.style.display = 'inline-flex';
-        }
-
-        if (quoteActionBtn) {
-            quoteActionBtn.addEventListener('click', function () {
-                calculateQuote();
-            });
-        }
-
-        acabadoSelect.addEventListener('change', function () {
-            const value = acabadoSelect.value;
-            const showPrimerOptions = value.includes('Primer');
-            primerColors.style.display = showPrimerOptions ? 'grid' : 'none';
-        });
     </script>
+    <script src="script.js"></script>
 </body>
 </html>
 
