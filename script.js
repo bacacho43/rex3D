@@ -1,55 +1,111 @@
-document.addEventListener('DOMContentLoaded', () => {
+﻿document.addEventListener('DOMContentLoaded', () => {
+    const body = document.body;
+    const loadingLine = document.getElementById('loadingLine');
+    const header = document.getElementById('main-header');
+    const heroTitle = document.querySelector('.hero-title');
+    const revealElements = document.querySelectorAll('.reveal');
+    const stickyQuoteBtn = document.getElementById('stickyQuoteBtn');
     const quoteModal = document.getElementById('modal-cotizacion');
-    const cotizarBtn = document.getElementById('cotizar-btn');
-    const openQuoteButtons = document.querySelectorAll('.open-quote');
-    const closeQuoteButton = document.querySelector('.modal-close');
     const quoteBackdrop = document.querySelector('.quote-modal-backdrop');
-    const acabadoSelect = document.getElementById('acabadoSelect');
-    const primerColors = document.getElementById('primerColors');
-    const quoteActionBtn = document.querySelector('.quote-action');
-    const estimateResult = document.getElementById('estimateResult');
+    const closeModalButton = document.querySelector('.modal-close');
+    const cotizarBtn = document.querySelector('.quote-action');
     const whatsappContactBtn = document.getElementById('whatsappContactBtn');
     const nextStepButtons = document.querySelectorAll('.next-step');
     const prevStepButtons = document.querySelectorAll('.prev-step');
     const modalSteps = Array.from(document.querySelectorAll('.modal-step'));
+    const acabadoSelect = document.getElementById('acabadoSelect');
+    const primerColors = document.getElementById('primerColors');
+    const estimateResult = document.getElementById('estimateResult');
     let currentStep = 0;
+    let ticking = false;
 
-    function setModalOpen(open) {
+    function finishLoading() {
+        body.classList.add('loaded');
+        setTimeout(() => {
+            body.classList.add('loading-done');
+            loadingLine.style.opacity = '0';
+        }, 300);
+    }
+
+    requestAnimationFrame(() => {
+        loadingLine.style.width = '100%';
+        setTimeout(finishLoading, 1400);
+    });
+
+    function updateHeader() {
+        if (window.scrollY > 20) {
+            header.classList.add('scroll-active');
+        } else {
+            header.classList.remove('scroll-active');
+        }
+    }
+
+    function updateHeroParallax() {
+        if (!heroTitle) return;
+        const offset = window.scrollY * 0.18;
+        heroTitle.style.transform = `translateY(${offset * -1}px)`;
+    }
+
+    function onScroll() {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                updateHeader();
+                updateHeroParallax();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    updateHeader();
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in-up');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.16 });
+
+    revealElements.forEach((element) => revealObserver.observe(element));
+
+    function setModalVisibility(open) {
         quoteModal.classList.toggle('active', open);
         quoteModal.setAttribute('aria-hidden', open ? 'false' : 'true');
         document.body.style.overflow = open ? 'hidden' : 'auto';
         if (open) {
-            setStep(0);
+            setModalStep(0);
             estimateResult.style.display = 'none';
             whatsappContactBtn.style.display = 'none';
         }
     }
 
-    function setStep(index) {
+    function setModalStep(index) {
         currentStep = Math.max(0, Math.min(index, modalSteps.length - 1));
         modalSteps.forEach((step, idx) => {
             step.classList.toggle('active', idx === currentStep);
         });
     }
 
-    function handleTipoBaseChange() {
-        const value = acabadoSelect.value;
-        const showPrimer = value.includes('Primer');
-        primerColors.style.display = showPrimer ? 'grid' : 'none';
+    function togglePrimerOptions() {
+        const show = acabadoSelect.value.includes('Primer');
+        primerColors.style.display = show ? 'grid' : 'none';
     }
 
     function getBaseTypeMultiplier(tipoBase) {
-        const multipliers = {
+        const map = {
             'Filamento Directo': 1.0,
             'Primer Universal': 1.15,
             'Primer Rellenador': 1.25,
             'Acabado Plus': 1.3,
         };
-        return multipliers[tipoBase] || 1.0;
+        return map[tipoBase] || 1.0;
     }
 
     function getFinishMultiplier(acabadoEspecial) {
-        const multipliers = {
+        const map = {
             'Mate': 1.0,
             'Satinado': 1.15,
             'Brillante': 1.25,
@@ -60,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'Metalizado Plata': 2.3,
             'Metalizado Bronce': 2.3,
         };
-        return multipliers[acabadoEspecial] || 1.0;
+        return map[acabadoEspecial] || 1.0;
     }
 
     function formatCurrency(value) {
@@ -68,21 +124,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function calculateQuote() {
-        const altura = parseFloat(document.querySelector('[name="alto"]').value) || 0;
+        const alto = parseFloat(document.querySelector('[name="alto"]').value) || 0;
         const ancho = parseFloat(document.querySelector('[name="ancho"]').value) || 0;
         const profundidad = parseFloat(document.querySelector('[name="profundidad"]').value) || 0;
         const tipoBase = document.querySelector('[name="tipoBase"]').value;
         const acabadoEspecial = document.querySelector('[name="acabadoEspecial"]').value;
         const especificaciones = document.querySelector('[name="especificaciones"]').value.trim();
 
-        if (!altura || !ancho || !profundidad) {
-            estimateResult.innerHTML = '<p class="result-error">Por favor ingresa Alto, Ancho y Profundidad para obtener tu estimado.</p>';
+        if (!alto || !ancho || !profundidad) {
+            estimateResult.innerHTML = '<p>Por favor ingresa Alto, Ancho y Profundidad para obtener tu estimado.</p>';
             estimateResult.style.display = 'block';
             whatsappContactBtn.style.display = 'none';
             return;
         }
 
-        const volumen = altura * ancho * profundidad;
+        const volumen = alto * ancho * profundidad;
         const baseMultiplier = getBaseTypeMultiplier(tipoBase);
         const finishMultiplier = getFinishMultiplier(acabadoEspecial);
         const baseRate = 4.2;
@@ -92,42 +148,26 @@ document.addEventListener('DOMContentLoaded', () => {
         const precioTexto = `${formatCurrency(minimo)} - ${formatCurrency(maximo)}`;
 
         estimateResult.innerHTML = `
-            <p class="estimate-copy">Tu estimado es <strong>${precioTexto}</strong>.</p>
-            <p class="estimate-copy">El precio final depende de la complejidad del modelo 3D, el material y el acabado seleccionado.</p>
+            <p>Tu estimado es <strong>${precioTexto}</strong>.</p>
+            <p>El precio final depende de la complejidad del modelo y el acabado.</p>
         `;
         estimateResult.style.display = 'block';
         whatsappContactBtn.style.display = 'inline-flex';
 
-        const medidas = `${altura} x ${ancho} x ${profundidad}`;
+        const medidas = `${alto} x ${ancho} x ${profundidad}`;
         const mensaje = `Hola REX 3D STUDIO, coticé en la web. Pieza de ${medidas} cm, Acabado: ${tipoBase}, Efecto: ${acabadoEspecial}. Estimado: ${precioTexto}. Notas: ${especificaciones || 'Sin especificaciones adicionales.'}`;
         whatsappContactBtn.href = `https://wa.me/?text=${encodeURIComponent(mensaje)}`;
     }
 
-    cotizarBtn?.addEventListener('click', (event) => {
-        event.preventDefault();
-        setModalOpen(true);
-    });
+    stickyQuoteBtn.addEventListener('click', () => setModalVisibility(true));
+    quoteBackdrop.addEventListener('click', () => setModalVisibility(false));
+    closeModalButton.addEventListener('click', () => setModalVisibility(false));
 
-    openQuoteButtons.forEach((button) => {
-        button.addEventListener('click', (event) => {
-            event.preventDefault();
-            setModalOpen(true);
-        });
-    });
+    nextStepButtons.forEach((button) => button.addEventListener('click', () => setModalStep(currentStep + 1)));
+    prevStepButtons.forEach((button) => button.addEventListener('click', () => setModalStep(currentStep - 1)));
 
-    closeQuoteButton?.addEventListener('click', () => setModalOpen(false));
-    quoteBackdrop?.addEventListener('click', () => setModalOpen(false));
+    cotizarBtn.addEventListener('click', calculateQuote);
+    acabadoSelect.addEventListener('change', togglePrimerOptions);
 
-    nextStepButtons.forEach((button) => {
-        button.addEventListener('click', () => setStep(currentStep + 1));
-    });
-
-    prevStepButtons.forEach((button) => {
-        button.addEventListener('click', () => setStep(currentStep - 1));
-    });
-
-    quoteActionBtn?.addEventListener('click', calculateQuote);
-    acabadoSelect?.addEventListener('change', handleTipoBaseChange);
-
-    handleTipoBaseChange();
+    togglePrimerOptions();
 });

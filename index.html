@@ -3,168 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REX 3D STUDIO | Esculturas Premium en Impresión 3D</title>
+    <title>REX 3D STUDIO | Ingeniería y Arte en Cada Capa</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- Preloader -->
-    <div id="preloader">
-        <img src="t rex.jpg" alt="Cargando..." class="preloader-dino">
-    </div>
+    <div class="loading-line" id="loadingLine"></div>
 
     <header id="main-header">
-        <nav class="navbar">
-            <div class="nav-container">
-                <div class="logo">
-                    <img src="logo.jpeg" alt="" class="logo-image">
-                    <div class="brand-text">
-                        <span class="rex">REX</span><span class="d3">3D</span>
-                        <span class="studio">STUDIO</span>
-                    </div>
-                </div>
-                
-                <div class="search-container">
-                    <input type="text" class="search-input" placeholder="Buscar tu proyecto...">
-                    <button class="search-btn"><i class="fas fa-search"></i></button>
-                </div>
-
-                <ul class="nav-links">
-                    <li><a href="#proyectos">Proyectos</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
-                </ul>
-
-                <div class="nav-icons">
-                    <a href="#" class="icon-link open-quote"><i class="fas fa-user"></i> <span class="icon-text">Cotizar</span></a>
-                </div>
-            </div>
-        </nav>
+        <div class="header-inner">
+            <a href="#hero" class="brand">
+                <img src="logo.jpeg" alt="REX 3D STUDIO" class="logo-image">
+                <span>REX 3D STUDIO</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#proyectos">Proyectos</a>
+                <a href="#acabados">Acabados</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+        </div>
     </header>
 
     <main>
-    <section class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h3>ESCULTURAS PREMIUM</h3>
-            <h1>Arte Impreso en 3D</h1>
-            <p>Transforma tu idea en una pieza tangible con precisión artística. Envíanos tu proyecto y recibe un diseño exclusivo hecho a medida.</p>
-            <button id="cotizar-btn" class="btn-main open-quote">Cotizar mi Proyecto</button>
-        </div>
-    </section>
-
-    <section class="intro" id="servicios">
-        <div class="intro-content">
-            <p>En REX 3D fusionamos tecnología de vanguardia con visión artística. Nos especializamos en la creación de piezas únicas, figuras coleccionables y prototipos de alta fidelidad.</p>
-        </div>
-    </section>
-
-    <section class="parallax-bg">
-        <div class="parallax-content">
-            <h2>Innovación en cada capa</h2>
-        </div>
-    </section>
-
-    <section class="creative-process">
-        <div class="process-header">
-            <p class="section-subtitle">Proceso Creativo</p>
-            <h2>Cómo llevamos tu idea a la realidad</h2>
-            <p>Descubre el flujo de trabajo detrás de cada pieza: desde el boceto digital hasta la impresión 3D y el acabado final.</p>
-        </div>
-        <div class="videos-swiper">
-            <div class="video-overlay">
-                <div class="overlay-text">Arte impreso en 3D</div>
+        <section class="hero" id="hero">
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="timelaps.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+            <div class="hero-copy">
+                <p class="eyebrow">Ingeniería + Arte</p>
+                <h1 class="hero-title">REX 3D STUDIO</h1>
+                <p class="hero-subtitle">INGENIERÍA Y ARTE EN CADA CAPA</p>
             </div>
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <video class="process-video" src="./estdio.mp4" autoplay muted loop playsinline preload="auto"></video>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <video class="process-video" src="./timlaps.mp4" autoplay muted loop playsinline preload="auto"></video>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-        </div>
-    </section>
+        </section>
 
-    <section class="projects" id="proyectos">
-        <div class="section-header">
-            <p class="section-subtitle">Galería de Trabajos</p>
-            <h2>Proyectos Realizados</h2>
-            <p>Una selección de trabajos que conectan diseño, detalle y precisión técnica en cada pieza impresa en 3D.</p>
-        </div>
-        <div class="swiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <article class="project-card">
-                        <h3>Figura coleccionable</h3>
-                        <p>Escultura detallada para exposiciones y coleccionistas, con acabados premium y geometría compleja.</p>
+        <section class="section projects" id="proyectos">
+            <div class="section-content">
+                <p class="section-eyebrow">Proyectos</p>
+                <h2>Diseño escultórico con precisión técnica.</h2>
+                <div class="cards-grid">
+                    <article class="project-card reveal">
+                        <h3>Figura de colección</h3>
+                        <p>Escultura premium con acabados de alta fidelidad para clientes exigentes.</p>
                     </article>
-                </div>
-                <div class="swiper-slide">
-                    <article class="project-card">
+                    <article class="project-card reveal">
                         <h3>Prototipo funcional</h3>
-                        <p>Desarrollo de piezas de alta fidelidad para prueba de forma, función y ensamblaje rápido.</p>
+                        <p>Modelos técnicos listos para prueba de forma, ensamble y uso real.</p>
                     </article>
-                </div>
-                <div class="swiper-slide">
-                    <article class="project-card">
+                    <article class="project-card reveal">
                         <h3>Escultura de exhibición</h3>
-                        <p>Composiciones artísticas para interiores, con texturas finas y presencia visual de alto impacto.</p>
+                        <p>Obras de impacto visual pensadas para espacios selectos y galerías.</p>
                     </article>
                 </div>
             </div>
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-        </div>
-    </section>
+        </section>
 
-    <section class="contact-section" id="contacto">
-        <div class="contact-grid">
-            <a href="https://wa.me/" target="_blank" rel="noreferrer" class="contact-card contact-whatsapp">
-                <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
-                <div>
-                    <h3>WhatsApp</h3>
-                    <p>Mensaje rápido</p>
+        <section class="section finishes" id="acabados">
+            <div class="section-content">
+                <p class="section-eyebrow">Galería de Acabados</p>
+                <h2>Acabados que elevan cada pieza.</h2>
+                <div class="finishes-grid">
+                    <div class="finish-card reveal">Mate</div>
+                    <div class="finish-card reveal">Satinado</div>
+                    <div class="finish-card reveal">Brillante</div>
+                    <div class="finish-card reveal">Tornasol</div>
+                    <div class="finish-card reveal">MC00</div>
+                    <div class="finish-card reveal">Hidrocromo</div>
+                    <div class="finish-card reveal">Metalizado Oro</div>
+                    <div class="finish-card reveal">Metalizado Plata</div>
+                    <div class="finish-card reveal">Metalizado Bronce</div>
                 </div>
-            </a>
-            <a href="https://www.instagram.com/rex3d.studio/" target="_blank" rel="noreferrer" class="contact-card contact-instagram">
-                <div class="contact-icon"><i class="fab fa-instagram"></i></div>
+            </div>
+        </section>
+
+        <section class="section contact" id="contacto">
+            <div class="section-content contact-content">
                 <div>
-                    <h3>Instagram</h3>
-                    <p>Ver nuestros reels</p>
+                    <p class="section-eyebrow">Contacto</p>
+                    <h2>Hablemos de tu próximo proyecto.</h2>
                 </div>
-            </a>
-            <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" class="contact-card contact-facebook">
-                <div class="contact-icon"><i class="fab fa-facebook-f"></i></div>
-                <div>
-                    <h3>Facebook</h3>
-                    <p>Conecta con nosotros</p>
-                </div>
-            </a>
-            <a href="mailto:contacto@rex3dstudio.com" target="_blank" rel="noreferrer" class="contact-card contact-email">
-                <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                <div>
-                    <h3>Correo</h3>
-                    <p>Escríbenos</p>
-                </div>
-            </a>
-        </div>
-    </section>
+                <a class="contact-link" href="https://wa.me/" target="_blank" rel="noreferrer">WhatsApp</a>
+            </div>
+        </section>
     </main>
+
+    <button id="stickyQuoteBtn" class="sticky-quote">COTIZAR PROYECTO</button>
 
     <div id="modal-cotizacion" class="quote-modal" aria-hidden="true">
         <div class="quote-modal-backdrop"></div>
@@ -173,7 +98,7 @@
             <div class="modal-heading">
                 <p class="modal-eyebrow">Solicitud de Cotización</p>
                 <h2>Calcula tu proyecto 3D</h2>
-                <p>Completa los datos esenciales y recibe una propuesta profesional al instante.</p>
+                <p>Recibe un estimado en segundos y confirma tu presupuesto vía WhatsApp.</p>
             </div>
             <form class="quote-form">
                 <div class="modal-step step-1 active">
@@ -254,106 +179,6 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-        // Preloader - Ocultar después de 2 segundos
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                const preloader = document.getElementById('preloader');
-                preloader.classList.add('hidden');
-            }, 2000);
-        });
-    </script>
-    <script>
-        // Scroll behavior para ocultar/mostrar header y cambiar transparencia
-        let lastScrollTop = 0;
-        const header = document.getElementById('main-header');
-        
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.scrollY || document.documentElement.scrollTop;
-            
-            // Cambiar fondo del header cuando hay scroll
-            if (scrollTop > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-            
-            // Hide/show header al scroll
-            if (scrollTop > lastScrollTop) {
-                // Scroll hacia abajo - ocultar header
-                header.classList.add('nav-hidden');
-            } else {
-                // Scroll hacia arriba - mostrar header
-                header.classList.remove('nav-hidden');
-            }
-            
-            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-        });
-        
-        document.addEventListener('DOMContentLoaded', function () {
-            const videosSwiper = new Swiper('.videos-swiper', {
-                slidesPerView: 1,
-                spaceBetween: 20,
-                navigation: {
-                    nextEl: '.videos-swiper .swiper-button-next',
-                    prevEl: '.videos-swiper .swiper-button-prev',
-                },
-                loop: true,
-                autoplay: false, // Desactivado porque lo manejamos con el ended del video
-                effect: 'fade',
-                fadeEffect: {
-                    crossFade: true,
-                },
-                speed: 1000,
-            });
-
-            const swiper = new Swiper('.swiper', {
-                slidesPerView: 1,
-                spaceBetween: 20,
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-                breakpoints: {
-                    768: {
-                        slidesPerView: 2,
-                    },
-                    1024: {
-                        slidesPerView: 3,
-                    },
-                },
-                autoplay: {
-                    delay: 5000,
-                    disableOnInteraction: false,
-                },
-                loop: true,
-            });
-
-            // Manejar autoplay basado en el final del video
-            const videos = document.querySelectorAll('.videos-swiper video');
-            videos.forEach((video) => {
-                video.addEventListener('ended', () => {
-                    videosSwiper.slideNext();
-                });
-            });
-        });
-
-        // Efecto de fade out para el texto centrado en creative-process (Efecto Ferrari)
-        window.addEventListener('scroll', function() {
-            const text = document.querySelector('.overlay-text');
-            if (text) {
-                let scrollValue = window.scrollY;
-                // Se vuelve transparente conforme bajas (500 es la velocidad de desvanecido)
-                text.style.opacity = Math.max(0, 1 - (scrollValue / 500));
-            }
-        });
-    </script>
     <script src="script.js"></script>
 </body>
 </html>
-
